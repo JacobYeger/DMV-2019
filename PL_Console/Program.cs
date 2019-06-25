@@ -23,54 +23,6 @@ namespace PL_Console
 
                 Console.WriteLine(test1);
                 Console.WriteLine(test2);
-
-
-                Trainee trainee = new Trainee
-                {
-                    Address = new Address
-                    {
-                        City = "JLM",
-                        Number = 21,
-                        Street = "Havaad Heleumi"
-                    },
-                    Birthday = new DateTime(1906, 10, 25),
-                    Email = new System.Net.Mail.MailAddress("yeger@yeger.com"),
-                    FirstName = "Yakov",
-                    LastName = "Yeger",
-                    ID = "343835955",
-                    PhoneNumber = "0586623813",
-                    NumDrivingLessonsPassed = 8,
-                    Gearbox = Gearbox.AUTOMATIC,
-                    Gender = Gender.MALE 
-                    
-
-                };
-                Tester tester = new Tester
-                {
-                    Address = new Address
-                    {
-                        City = "JLM",
-                        Number = 21,
-                        Street = "Havaad Heleumi"
-                    },
-                    Birthday = new DateTime(1906, 10, 25),
-                    Email = new System.Net.Mail.MailAddress("yeger@yeger.com"),
-                    FirstName = "Jacques",
-                    LastName = "Benzakein",
-                    ID = "111111118",
-                    PhoneNumber = "0586623813",
-                    Gender = Gender.MALE,                    
-                    YearsExperience = 8,
-                    VehicleSpecialize = VehicleType.HEAVY_TRUCK
-                };
-                Console.WriteLine("TRAINEE: \n");
-                Console.WriteLine(trainee);
-                Console.WriteLine("Tester: \n");
-                Console.WriteLine(tester);
-                Console.WriteLine("\n");
-                Console.WriteLine("Press any key to continue:\n");
-                Console.ReadKey();
-
               
             }
             catch (Exception)

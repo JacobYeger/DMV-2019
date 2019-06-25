@@ -58,6 +58,7 @@ namespace BE
             result += string.Format("Score: {0} \n", TestScore);
             result += string.Format("{0} \n", TestResult);
 
+            return result;
         }
 
 
