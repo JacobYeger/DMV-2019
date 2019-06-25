@@ -25,7 +25,10 @@ namespace PL_WPF
             InitializeComponent();
             trainee = new BE.Trainee
             {
-                ID = "1234"
+                ID = "1234",
+                FirstName = "Yakov",
+                LastName= "Yeger",
+
             };
             this.DataContext = trainee;
         }
@@ -35,7 +38,7 @@ namespace PL_WPF
             trainee = new BE.Trainee
             {
                 ID = iDTextBox.Text,
-                Birthday =(DateTime)birthDayDatePicker.SelectedDate,
+                Birthday = birthDayDatePicker.SelectedDate.HasValue ? (birthDayDatePicker.SelectedDate) : DateTime.Today,
                 //DrivingSchool = drivingSchoolTextBox.Text,
 
 
@@ -45,7 +48,7 @@ namespace PL_WPF
 
 
                 //rest of details
-                
+
 
 
             };
@@ -62,9 +65,10 @@ namespace PL_WPF
             // traineeViewSource.Source = [generic data source]
         }
 
-        private void TraineeDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void DrivingSchoolComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+           
+             
         }
     }
 }

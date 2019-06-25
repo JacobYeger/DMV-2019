@@ -20,7 +20,8 @@ namespace BE
     }
     public enum DrivingSchool
     {
-        JERUSALEM, TEL_AVIV, HAIFA, MODIIN, ASHKELON
+        JERUSALEM, TEL_AVIV, HAIFA, MODIIN, ASHKELON, BEER_SHEVA, EILAT
+
     }
     
 }

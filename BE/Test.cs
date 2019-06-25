@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Test
+    public class Test: ICloneable
     {
         public string TestNumber { get; set; } //test number
         public string TesterIdNumber { get; set; }//ID number of the tester
@@ -36,8 +36,24 @@ namespace BE
             set { TestScore = value; } //sets value of the test score
         }
 
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+        
+        public override string ToString()
+        {
+            string result = "";
+            result += string.Format("Years of experience: {0} \n", TestNumber);
+            result += string.Format("Years of experience: {0} \n", TesterIdNumber);
+            result += string.Format("Years of experience: {0} \n", YearsExperience);
+            result += string.Format("Years of experience: {0} \n", YearsExperience);
+            result += string.Format("Years of experience: {0} \n", YearsExperience);
 
+            result += string.Format("Years of experience: {0} \n", YearsExperience);
+            result += string.Format("Years of experience: {0} \n", YearsExperience);
 
+        }
 
 
     }

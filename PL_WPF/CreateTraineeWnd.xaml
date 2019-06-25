@@ -67,7 +67,7 @@
             <Label Content="Street:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,1.333" Grid.Row="8" VerticalAlignment="Center" Grid.RowSpan="2" Height="26" Width="44"/>
             <TextBox x:Name="streetTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3.333,4,0,2.333" Grid.Row="8" Text="{Binding Address.Street, Mode=OneWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Grid.RowSpan="2"/>
             <Label Content="Driving School:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,0,0,-34" Grid.Row="16" VerticalAlignment="Bottom" Height="26" Width="Auto" RenderTransformOrigin="0.449,2.487"/>
-            <ComboBox x:Name="drivingSchoolComboBox" Grid.Column="1" DisplayMemberPath="DrivingSchool" HorizontalAlignment="Left" Height="24" ItemsSource="{Binding DrivingSchool, Mode=OneWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3,8,0,-32" Grid.Row="16" VerticalAlignment="Center" Width="120">
+            <ComboBox x:Name="drivingSchoolComboBox" Grid.Column="1" DisplayMemberPath="DrivingSchool" HorizontalAlignment="Left" Height="24" ItemsSource="{Binding DrivingSchool, Mode=OneWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3,8,0,-32" Grid.Row="16" VerticalAlignment="Center" Width="120" SelectionChanged="DrivingSchoolComboBox_SelectionChanged">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>

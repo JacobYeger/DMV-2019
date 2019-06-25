@@ -14,7 +14,7 @@ namespace BL
         public List<Trainee> allTrainees()
         {
             //some verification validation and more ...
-            return dal.getAllTrainees();
+            //return dal.getTrainees();
         }
     }
 }
