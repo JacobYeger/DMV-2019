@@ -44,14 +44,18 @@ namespace BE
         public override string ToString()
         {
             string result = "";
-            result += string.Format("Years of experience: {0} \n", TestNumber);
-            result += string.Format("Years of experience: {0} \n", TesterIdNumber);
-            result += string.Format("Years of experience: {0} \n", YearsExperience);
-            result += string.Format("Years of experience: {0} \n", YearsExperience);
-            result += string.Format("Years of experience: {0} \n", YearsExperience);
-
-            result += string.Format("Years of experience: {0} \n", YearsExperience);
-            result += string.Format("Years of experience: {0} \n", YearsExperience);
+            result += string.Format("Test number: {0} \n", TestNumber);
+            result += string.Format("Tester ID number: {0} \n", TesterIdNumber);
+            result += string.Format("Trainee ID number: {0} \n", TraineeIdNumber);
+            result += string.Format("Test date: {0} \n", TestDate);
+            result += string.Format("Test time: {0} \n", TestTime);
+            result += string.Format("Starting point: {0} \n", TestStartPoint);
+            result += string.Format("Mirror checking: {0} \n", MirrorChecking);
+            result += string.Format("Parking in reverse: {0} \n", ParkingInReverse);
+            result += string.Format("Maintaining distance: {0} \n", MaintainingDistance);
+            result += string.Format("Signaling: {0} \n", Signaling);
+            result += string.Format("Score: {0} \n", TestScore);
+            result += string.Format("{0} \n", TestResult);
 
         }
 
