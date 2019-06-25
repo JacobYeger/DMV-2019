@@ -21,8 +21,8 @@ namespace PL_Console
 
                 test2.TestNumber = "test";
 
-                Console.WriteLine(test1.TestNumber);
-                Console.WriteLine(test2.TestNumber);
+                Console.WriteLine(test1);
+                Console.WriteLine(test2);
 
 
                 Trainee trainee = new Trainee

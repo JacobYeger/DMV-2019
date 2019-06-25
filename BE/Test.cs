@@ -18,6 +18,7 @@ namespace BE
         public bool ParkingInReverse { get; set; } //did trainee park in reverse properly?
         public bool MaintainingDistance { get; set; }//did trainee maintain proper distance?
         public bool Signaling { get; set; } //did trainee signal appropriately
+        public string TestersComments { get; set; } //Holds any comments made by the Tester
         public int TestScore;//holds the value of the test score
         //test result will print the result of the examination
         public int TestResult

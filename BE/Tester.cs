@@ -13,7 +13,7 @@ namespace BE
         public VehicleType VehicleSpecialize { get; set; } //type of vehicle tester specializes in
         public int MAX_TESTS_PER_WEEK { get; set; } //max tests per week
         //public Array WorkDays; //matrix representing days of the week needs to be implemented
-        public int Max_Distance { get; set; } //max distance from his house (in Kilometers that he will give a test)
+        public int Max_Distance { get; set; } //max distance from his house (in Kilometers) that he will give a test
 
         public override string ToString()
         {
