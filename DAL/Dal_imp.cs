@@ -95,7 +95,6 @@ namespace DAL
             var x = (from d in DAL.DataSource.getTests
                      where (d.TestNumber == drivingTest.TestNumber)
                      select d).FirstOrDefault();
-
             //x.Tester_ID = drivingTest.Tester_ID;
             //x.StartingPoint = drivingTest.StartingPoint;
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-    public class myBL: IBL
+    public class myBL
     {
         IDAL dal = FactoryDAL.getInstance();
         //public List<Trainee> allTrainees()
