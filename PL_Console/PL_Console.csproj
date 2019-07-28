@@ -55,9 +55,17 @@
       <Project>{f1a6e6b9-c0ff-443d-9b4d-6f0b42e1e0e1}</Project>
       <Name>BE</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{8a43acaf-58bf-4c81-b633-dd368e1c9d08}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{930fb0ae-8c8d-4dc9-9714-4757d7844b6c}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PL_WPF\PL_WPF.csproj">
+      <Project>{42cd2c91-c668-44c4-a352-06be4e049665}</Project>
+      <Name>PL_WPF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

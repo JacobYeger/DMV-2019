@@ -27,8 +27,10 @@ namespace BE
                 if (!validID(value))
                 {
                     throw new Exception("not valid ID");
-                }
+                }else{
+                //Console.WriteLine("passed " + value);
                 myID = value;
+                }
             }
         }
 
@@ -42,7 +44,7 @@ namespace BE
             result += string.Format("Gender: {0}\n", Gender);
             result += string.Format("Birthday: {0}\n", Birthday);
             result += string.Format("Email: {0}\n", Email);
-            result += string.Format("Address: {0}\n", Address);
+            result += string.Format("Address: {0}", Address);
             result += string.Format("MobilePhoneNumber: {0}\n", PhoneNumber);
             return result; 
         }

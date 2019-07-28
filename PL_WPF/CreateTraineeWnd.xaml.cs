@@ -38,7 +38,7 @@ namespace PL_WPF
             trainee = new BE.Trainee
             {
                 ID = iDTextBox.Text,
-                Birthday = birthDayDatePicker.SelectedDate.HasValue ? (birthDayDatePicker.SelectedDate) : DateTime.Today,
+                Birthday = birthDayDatePicker.SelectedDate.HasValue ? (DateTime)(birthDayDatePicker.SelectedDate) : DateTime.Today,
                 //DrivingSchool = drivingSchoolTextBox.Text,
 
 

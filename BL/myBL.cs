@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-    public class myBL
+    public class myBL: IBL
     {
         IDAL dal = FactoryDAL.getInstance();
-        public List<Trainee> allTrainees()
-        {
+        //public List<Trainee> allTrainees()
+        //{
             //some verification validation and more ...
             //return dal.getTrainees();
-        }
+        //}
     }
 }

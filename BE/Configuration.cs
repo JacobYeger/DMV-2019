@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Configuration
+    public static class Configuration
     {
+        public static int CurrentTestNumber = 0;
         public static int MAX_LESSONS_PER_WEEK = 20;
         public static int MIN_NUMBER_OF_LESSONS = 45;
         public static int MAX_AGE_INSTRUCTOR = 60;

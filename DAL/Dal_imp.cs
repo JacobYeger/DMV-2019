@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +7,10 @@ using BE;
 
 namespace DAL
 {
-    internal class myDAL : IDAL
+
+    public class Dal_imp : IDAL
     {
+
         public bool AddTrainee(Trainee trainee)
         {
             foreach (var item in DAL.DataSource.getTrainees)
@@ -40,13 +42,13 @@ namespace DAL
             return true;
         }
 
-
-
         public bool AddDrivingTest(Test drivingTest)
         {
-            DAL.DataSource.getTests.Add((Test)drivingTest.Clone());
+            Test TestToAdd = (Test)drivingTest.Clone();
+            TestToAdd.TestNumber = (++Configuration.CurrentTestNumber).ToString();
+            DAL.DataSource.getTests.Add(TestToAdd);
             return true;
-        }     
+        }
         /*
         public bool RemoveTrainee(Trainee trainee)
         {
@@ -62,8 +64,8 @@ namespace DAL
         {
             //find the bad trainee from within the list of trainees
             Trainee BadTrainee = (from T in DAL.DataSource.getTrainees
-                                where (T.ID == trainee.ID)
-                                select T).FirstOrDefault();
+                                  where (T.ID == trainee.ID)
+                                  select T).FirstOrDefault();
             //return a bool value if the trainees is succesfuly removed       
             return DAL.DataSource.getTrainees.Remove(BadTrainee);
         }
@@ -82,8 +84,8 @@ namespace DAL
         {
             //find the bad test from within the list of tests
             Test BadTest = (from T in DAL.DataSource.getTests
-                                where (T.TestNumber == test.TestNumber)
-                                select T).FirstOrDefault();
+                            where (T.TestNumber == test.TestNumber)
+                            select T).FirstOrDefault();
             //return a bool value if the test is succesfuly removed
             return DAL.DataSource.getTests.Remove(BadTest);
         }
@@ -115,7 +117,7 @@ namespace DAL
         public bool UpdateTrainee(Trainee trainee)
         {
             var x = (from d in DAL.DataSource.getTrainees
-                     where (d.ID ==trainee.ID)
+                     where (d.ID == trainee.ID)
                      select d).FirstOrDefault();
             DAL.DataSource.getTrainees.Remove(x);
             DAL.DataSource.getTrainees.Add(trainee.Clone());
