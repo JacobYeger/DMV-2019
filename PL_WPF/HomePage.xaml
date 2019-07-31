@@ -10,26 +10,119 @@
         <TabControl TabStripPlacement="Left" Background="LightCyan" BorderBrush="Green">
             <TabItem Header="Testers">
                 <Grid Background="DeepSkyBlue">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height = "*" />
-                        <RowDefinition Height = "*" />
-                        <RowDefinition Height = "*" />
-                        <RowDefinition Height = "*" />
-                        <RowDefinition Height = "*" />
-                    </Grid.RowDefinitions>
-
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width = "*" />
+                        <ColumnDefinition Width = "*" />
+                        <ColumnDefinition Width = "*" />                     
                     </Grid.ColumnDefinitions>
-                    <Button Content="Add Tester" Grid.Row="0"/>
-                    <Button Content="Update Tester" Grid.Row="1"/>
-                    <Button Content="Delete Tester" Grid.Row ="2"/>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height ="*"/>
+                        <RowDefinition Height ="100"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Column="0" BorderThickness="2" BorderBrush="black">
+                        <!--Signing up to become a tester -->
+                        <TextBlock Margin ="5" Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
+                            Certified license examination administrator? <LineBreak/>
+                            This button is for you! <LineBreak/>
+                            <LineBreak/>
+                            Click below to Sign up to become a tester!
+                        </TextBlock>
+                    </Border>
+
+                    <Border Grid.Column="1" BorderThickness="2" BorderBrush="black">
+                        <!--Updating details of a current tester-->
+                        <TextBlock Margin="5" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
+                            Already one of our testers? <LineBreak/>
+                            <LineBreak/>
+                            Some of your details change? <LineBreak/>
+                            <LineBreak/>
+                            Click below to update your information!
+                        </TextBlock>
+                    </Border>
+
+                    <Border Grid.Column="2"  BorderThickness="2" BorderBrush="black">
+                        <!--Updating details of a current tester-->
+                        <TextBlock Margin="5" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
+                            Decided on a different direction? <LineBreak/>
+                           <LineBreak/>
+                            No Problem! <LineBreak/>
+                            <LineBreak/>
+                            Click below to quickly remove yourself from the system!
+
+
+                        </TextBlock>
+                    </Border>
+
+                    <Border BorderThickness="1" Grid.Column="0" Grid.Row="1" BorderBrush="black">
+                        <Button Content="Add Tester" FontSize="18" Grid.Column="0" Grid.Row="1"/>
+                    </Border>
+                    <Border BorderThickness="1" Grid.Column="1" Grid.Row="1" BorderBrush="black">
+                        <Button Content="Update Tester" FontSize="18" Grid.Column="1" Grid.Row="1"/>
+                    </Border>
+                    <Border BorderThickness="1" Grid.Column="2" Grid.Row="1" BorderBrush="black">
+                        <Button Content="Delete Tester" FontSize="18"  Grid.Column ="2" Grid.Row="1"/>
+                    </Border>
                 </Grid>
               
 
             </TabItem>
             <TabItem Header="Trainees" >
-                Trainee things go here
+                <Grid Background="LightSteelBlue">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "*" />
+                        <ColumnDefinition Width = "*" />
+                        <ColumnDefinition Width = "*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height ="*"/>
+                        <RowDefinition Height ="100"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Column="0" BorderThickness="2" BorderBrush="black">
+                        <!--Signing up to become a Trainee -->
+                        <TextBlock Margin ="5" Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
+                            Looking to start the process of getting a license?<LineBreak/>
+                            <LineBreak/>
+                            Look no further! <LineBreak/>
+                            <LineBreak/>
+                            Click below to sign up as  anew trainee today!
+                        </TextBlock>
+                    </Border>
+
+                    <Border Grid.Column="1" BorderThickness="2" BorderBrush="black">
+                        <!--Updating details of a current tester-->
+                        <TextBlock Margin="5" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
+                          Already Training with us?<LineBreak/>
+                            <LineBreak/>
+                            Some of your details changed? <LineBreak/>
+                            <LineBreak/>
+                            Click below to update your information!
+                        </TextBlock>
+                    </Border>
+
+                    <Border Grid.Column="2"  BorderThickness="2" BorderBrush="black">
+                        <!--Deleting details of a trainee-->
+                        <TextBlock Margin="5" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
+                            Got your license or decided to go with another group?<LineBreak/>
+                            <LineBreak/>
+                            Not a Rproblem! <LineBreak/>
+                            <LineBreak/>
+                            Click below to remove yourself from the system!
+                        </TextBlock>
+                    </Border>
+
+                    <Border BorderThickness="1" Grid.Column="0" Grid.Row="1" BorderBrush="black">
+                        <Button Content="Add Trainee" FontSize="18" Grid.Column="0" Grid.Row="1"/>
+                    </Border>
+                    <Border BorderThickness="1" Grid.Column="1" Grid.Row="1" BorderBrush="black">
+                        <Button Content="Update Trainee" FontSize="18" Grid.Column="1" Grid.Row="1"/>
+                    </Border>
+                    <Border BorderThickness="1" Grid.Column="2" Grid.Row="1" BorderBrush="black">
+                        <Button Content="Delete Trainee" FontSize="18"  Grid.Column ="2" Grid.Row="1"/>
+                    </Border>
+                </Grid>
+
             </TabItem>
 
             <TabItem Header="Tests">
