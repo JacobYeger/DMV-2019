@@ -15,26 +15,13 @@ using System.Windows.Shapes;
 namespace PL_WPF
 {
     /// <summary>
-    /// Interaction logic for HomePage.xaml
+    /// Interaction logic for DeleteTrainee.xaml
     /// </summary>
-    public partial class HomePage : Window
+    public partial class DeleteTrainee : Window
     {
-        public HomePage()
+        public DeleteTrainee()
         {
             InitializeComponent();
-        }
-
-
-        private void AddTraineeButton(object sender, RoutedEventArgs e)
-        {
-            AddTrainee addTrainee = new AddTrainee();
-            addTrainee.Show();
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-           
         }
     }
 }

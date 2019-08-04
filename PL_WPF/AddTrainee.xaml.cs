@@ -41,10 +41,31 @@ namespace PL_WPF
 
         private void finish(object sender, RoutedEventArgs e)
         {
-            Trainee trainee = new Trainee();
+            Trainee trainee = new Trainee();            
+            trainee.ID = iDTextBox.Text;
+            trainee.FirstName = firstNameTextBox.Text;
+            trainee.LastName = lastNameTextBox.Text;
             trainee.Birthday = birthdayDatePicker.SelectedDate.Value.Date;
-            Console.WriteLine(trainee.Birthday);
+            //email
+            String city = cityTextBox.Text;
+            String street = streetTextBox.Text;
+            int number = Int32.Parse(numberTextBox.Text);
+            trainee.Address = new Address
+            {
+                Number = number,
+                Street = street,
+                City = city
+            };
+            trainee.Gender = (Gender)genderComboBox.SelectedItem;
+            trainee.PhoneNumber = phoneNumberTextBox.Text;
+            //Trainee-specific stuff
+            trainee.VehicleType = (VehicleType)vehicleComboBox.SelectedItem;
+            trainee.Gearbox = (Gearbox)gearboxComboBox.SelectedItem;
+            trainee.DrivingSchool = (DrivingSchool)drivingSchoolComboBox.SelectedItem;
+            trainee.DrivingInstructor = drivingInstructorTextBox.Text;
+            trainee.NumDrivingLessonsPassed = Int32.Parse(numDrivingLessonsPassedTextBox.Text);
+            Console.WriteLine(trainee);
             this.Close();
-        }
+        }        
     }
 }

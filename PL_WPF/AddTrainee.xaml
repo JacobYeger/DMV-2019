@@ -4,11 +4,32 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL_WPF"
-        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PL_WPF.AddTrainee"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PL_WPF.AddTrainee"          
+        xmlns:codeg="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="AddTrainee" Height="600" Width="350" Loaded="Window_Loaded_1">
     <Window.Resources>
         <CollectionViewSource x:Key="traineeViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Trainee}, CreateList=True}"/>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type codeg:Enum}" x:Key="DrivingSchoolEnum">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="BE:DrivingSchool"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type codeg:Enum}" x:Key="GearboxEnum">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="BE:Gearbox"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type codeg:Enum}" x:Key="GenderEnum">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="BE:Gender"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type codeg:Enum}" x:Key="VehicleTypeEnum">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="BE:VehicleType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -35,6 +56,10 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+
+
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -45,7 +70,7 @@
             <Label VerticalAlignment="Center" Grid.Row="2" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Driving Instructor:"/>
             <TextBox x:Name="drivingInstructorTextBox" Width="120" VerticalAlignment="Center" Text="{Binding DrivingInstructor, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="3" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Driving School:"/>
-            <ComboBox x:Name="drivingSchoolComboBox" Width="120" VerticalAlignment="Center" Grid.Row="3" Margin="2.667,5,0,5" ItemsSource="{Binding}" Height="Auto" HorizontalAlignment="Left" DisplayMemberPath="DrivingSchool" Grid.Column="1">
+            <ComboBox x:Name="drivingSchoolComboBox" Width="120" VerticalAlignment="Center" Grid.Row="3" Margin="2.667,5,0,5"  ItemsSource="{Binding Source={StaticResource DrivingSchoolEnum}}" Height="Auto" HorizontalAlignment="Left" DisplayMemberPath="DrivingSchool" Grid.Column="1">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
@@ -54,9 +79,9 @@
             </ComboBox>
             <Label VerticalAlignment="Center" Grid.Row="4" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="First Name:"/>
             <TextBox x:Name="firstNameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
-           
-             <Label VerticalAlignment="Center" Grid.Row="5" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Gearbox:"/>
-            <ComboBox x:Name="gearboxComboBox" Width="120" VerticalAlignment="Center" Grid.Row="5" Margin="2.667,5,0,5" ItemsSource="{Binding}" Height="Auto" HorizontalAlignment="Left" DisplayMemberPath="Gearbox" Grid.Column="1">
+            <TextBox x:Name="lastNameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="8" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="5" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Gearbox:"/>
+            <ComboBox x:Name="gearboxComboBox" Width="120" VerticalAlignment="Center" Grid.Row="5" Margin="2.667,5,0,5"  ItemsSource="{Binding Source={StaticResource GearboxEnum}}" Height="Auto" HorizontalAlignment="Left" DisplayMemberPath="Gearbox" Grid.Column="1">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
@@ -64,7 +89,7 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
             <Label VerticalAlignment="Center" Grid.Row="6" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Gender:"/>
-            <ComboBox x:Name="genderComboBox" Width="120" VerticalAlignment="Center" Grid.Row="6" Margin="2.667,5,0,5" ItemsSource="{Binding}" Height="Auto" HorizontalAlignment="Left" DisplayMemberPath="Gender" Grid.Column="1">
+            <ComboBox x:Name="genderComboBox" Width="120" VerticalAlignment="Center" Grid.Row="6" Margin="2.667,5,0,5"  ItemsSource="{Binding Source={StaticResource GenderEnum}}" Height="Auto" HorizontalAlignment="Left" DisplayMemberPath="Gender" Grid.Column="1">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
@@ -79,16 +104,18 @@
             <Label VerticalAlignment="Center" Grid.Row="10" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Phone Number:"/>
             <TextBox x:Name="phoneNumberTextBox" Width="120" VerticalAlignment="Center" Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="10" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="11" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Vehicle Type:"/>
-            <TextBox x:Name="vehicleTypeTextBox" Width="120" VerticalAlignment="Center" Text="{Binding VehicleType, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="11" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+            <ComboBox x:Name="vehicleComboBox" Width="120" VerticalAlignment="Center" Grid.Row="11" Margin="2.667,4,0,4" ItemsSource="{Binding Source={StaticResource VehicleTypeEnum},Mode=TwoWay, Path=.}" FontSize="10" Foreground="Black" Height="24" HorizontalAlignment="Left" DisplayMemberPath="VehicleType" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="12" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="City:"/>
             <TextBox x:Name="cityTextBox" Width="120" VerticalAlignment="Center" Grid.Row="12" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="13" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Number:"/>
             <TextBox x:Name="numberTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Address.Number, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="13" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="14" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Street:"/>
             <TextBox x:Name="streetTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Address.Street, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="14" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Button Content="Finish" Grid.Row="15" Grid.ColumnSpan="2" Click="finish"/>
-            
+            <Label VerticalAlignment="Center" Grid.Row="15" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Email:"/>
+            <TextBox x:Name="EmailTextBox" Width="120" VerticalAlignment="Center" Grid.Row="15" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+
         </Grid>
+        <Button Content="Finish" Grid.ColumnSpan="3" Click="finish" Height="50" Margin="24,495,30.333,25.667"/>
 
     </Grid>
 </Window>

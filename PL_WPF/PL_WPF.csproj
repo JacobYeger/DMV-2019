@@ -67,6 +67,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeleteTrainee.xaml.cs">
+      <DependentUpon>DeleteTrainee.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -119,6 +122,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="AddTrainee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeleteTrainee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
