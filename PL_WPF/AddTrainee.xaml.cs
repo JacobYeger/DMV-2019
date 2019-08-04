@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DAL;
+using BE;
 
 namespace PL_WPF
 {
@@ -36,6 +38,13 @@ namespace PL_WPF
             // Load data by setting the CollectionViewSource.Source property:
             // traineeViewSource.Source = [generic data source]
         }
-        
+
+        private void finish(object sender, RoutedEventArgs e)
+        {
+            Trainee trainee = new Trainee();
+            trainee.Birthday = birthdayDatePicker.SelectedDate.Value.Date;
+            Console.WriteLine(trainee.Birthday);
+            this.Close();
+        }
     }
 }

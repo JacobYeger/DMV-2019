@@ -24,9 +24,14 @@ namespace PL_WPF
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void AddTraineeButton(object sender, RoutedEventArgs e)
         {
+            AddTrainee addTrainee = new AddTrainee();
+            addTrainee.Show();
 
         }
+
+      
     }
 }
