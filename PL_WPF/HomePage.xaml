@@ -55,7 +55,7 @@
                     </Border>
 
                     <Border BorderThickness="1" Grid.Column="0" Grid.Row="1" BorderBrush="black">
-                        <Button Content="Add Tester" FontSize="18" Grid.Column="0" Grid.Row="1"/>
+                        <Button Content="Add Tester" FontSize="18" Grid.Column="0" Grid.Row="1" Click="Button_Click"/>
                     </Border>
                     <Border BorderThickness="1" Grid.Column="1" Grid.Row="1" BorderBrush="black">
                         <Button Content="Update Tester" FontSize="18" Grid.Column="1" Grid.Row="1"/>
@@ -86,7 +86,7 @@
                             <LineBreak/>
                             Look no further! <LineBreak/>
                             <LineBreak/>
-                            Click below to sign up as  anew trainee today!
+                            Click below to sign up as a new trainee today!
                         </TextBlock>
                     </Border>
 
@@ -126,7 +126,59 @@
             </TabItem>
 
             <TabItem Header="Tests">
-                Test things go here
+                <Grid Background="LightSteelBlue">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "*" />
+                        <ColumnDefinition Width = "*" />
+                        <ColumnDefinition Width = "*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height ="*"/>
+                        <RowDefinition Height ="100"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Column="0" BorderThickness="2" BorderBrush="black">
+                        <!--Signing up to become a Trainee -->
+                        <TextBlock Margin ="5" Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
+                            Finished with your lessons and ready to sign up for the test?<LineBreak/>
+                           
+                            <LineBreak/>
+                            Click below to pair up with a tester and scheuld your examination!
+                        </TextBlock>
+                    </Border>
+
+                    <Border Grid.Column="1" BorderThickness="2" BorderBrush="black">
+                        <!--Updating details of a current tester-->
+                        <TextBlock Margin="5" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
+                          Already have a test scheduled?<LineBreak/>
+                            <LineBreak/>
+                            Need to reschedule? <LineBreak/>
+                            <LineBreak/>
+                            Click below to update your test timetable!
+                        </TextBlock>
+                    </Border>
+
+                    <Border Grid.Column="2"  BorderThickness="2" BorderBrush="black">
+                        <!--Deleting details of a trainee-->
+                        <TextBlock Margin="5" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
+                            Decided you don't want to take the test?<LineBreak/>
+                            <LineBreak/>
+                            Not a Rproblem! <LineBreak/>
+                            <LineBreak/>
+                            Click below to cancel your test appointment!
+                        </TextBlock>
+                    </Border>
+
+                    <Border BorderThickness="1" Grid.Column="0" Grid.Row="1" BorderBrush="black">
+                        <Button Content="Add Test" FontSize="18" Grid.Column="0" Grid.Row="1"/>
+                    </Border>
+                    <Border BorderThickness="1" Grid.Column="1" Grid.Row="1" BorderBrush="black">
+                        <Button Content="Update Test" FontSize="18" Grid.Column="1" Grid.Row="1"/>
+                    </Border>
+                    <Border BorderThickness="1" Grid.Column="2" Grid.Row="1" BorderBrush="black">
+                        <Button Content="Delete Test" FontSize="18"  Grid.Column ="2" Grid.Row="1"/>
+                    </Border>
+                </Grid>
             </TabItem>
 
         </TabControl>
