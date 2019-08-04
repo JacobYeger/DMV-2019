@@ -42,8 +42,26 @@ namespace PL_WPF
         private void finish(object sender, RoutedEventArgs e)
         {
             Trainee trainee = new Trainee();
+            //Standard Person fields
+            trainee.ID = iDTextBox.Text;
+            trainee.FirstName = firstNameTextBox.Text;
+            trainee.LastName = lastNameTextBox.Text;
             trainee.Birthday = birthdayDatePicker.SelectedDate.Value.Date;
-            Console.WriteLine(trainee.Birthday);
+            //email
+            String city = cityTextBox.Text;
+            String street = streetTextBox.Text;
+            int number = Int32.Parse(numberTextBox.Text);
+            trainee.Address = new Address(street, number, city);
+            trainee.Gender= genderComboBox.GetValue;
+            trainee.PhoneNumber = phoneNumberTextBox.Text;
+            //Trainee-specific stuff
+            trainee.VehicleType = vehicleTypeTextBox.Text; //Should be combobox?
+            trainee.Gearbox = gearboxComboBox.GetValue;
+            trainee.DrivingSchool = drivingSchoolComboBox.GetValue;
+            trainee.DrivingInstructor = drivingInstructorTextBox.Text;
+            trainee.NumDrivingLessonsPassed = Int32.Parse(numDrivingLessonsPassedTextBox.Text);
+
+            Console.WriteLine(trainee);
             this.Close();
         }
     }

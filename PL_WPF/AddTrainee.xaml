@@ -74,6 +74,7 @@
             <Label VerticalAlignment="Center" Grid.Row="7" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="ID:"/>
             <TextBox x:Name="iDTextBox" Width="120" VerticalAlignment="Center" Text="{Binding ID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="8" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Last Name:"/>
+            <TextBox x:Name="lastNameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="8" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="9" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Num Driving Lessons Passed:"/>
             <TextBox x:Name="numDrivingLessonsPassedTextBox" Width="120" VerticalAlignment="Center" Text="{Binding NumDrivingLessonsPassed, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="9" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="10" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Phone Number:"/>
