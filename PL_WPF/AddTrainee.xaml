@@ -10,24 +10,24 @@
         Title="AddTrainee" Height="600" Width="350" Loaded="Window_Loaded_1">
     <Window.Resources>
         <CollectionViewSource x:Key="traineeViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Trainee}, CreateList=True}"/>
-        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type codeg:Enum}" x:Key="DrivingSchoolEnum">
+        <ObjectDataProvider x:Key="DrivingSchoolEnum" MethodName="GetValues" ObjectType="{x:Type codeg:Enum}" >
             <ObjectDataProvider.MethodParameters>
-                <x:Type Type="BE:DrivingSchool"/>
+                <x:Type TypeName="BE:DrivingSchool"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type codeg:Enum}" x:Key="GearboxEnum">
             <ObjectDataProvider.MethodParameters>
-                <x:Type Type="BE:Gearbox"/>
+                <x:Type TypeName="BE:Gearbox"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type codeg:Enum}" x:Key="GenderEnum">
             <ObjectDataProvider.MethodParameters>
-                <x:Type Type="BE:Gender"/>
+                <x:Type TypeName="BE:Gender"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type codeg:Enum}" x:Key="VehicleTypeEnum">
             <ObjectDataProvider.MethodParameters>
-                <x:Type Type="BE:VehicleType"/>
+                <x:Type TypeName="BE:VehicleType"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </Window.Resources>
@@ -65,37 +65,19 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Label VerticalAlignment="Center" Grid.Row="1" Margin="3,2.057,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Birthday:"/>
+            <Label Content="Birthday:" VerticalAlignment="Center" Grid.Row="1" Margin="3,2.057,0,3" HorizontalAlignment="Left" Grid.Column="0" />
             <DatePicker x:Name="birthdayDatePicker" VerticalAlignment="Center" SelectedDate="{Binding Birthday, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="2.667,3.057,0,4" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="2" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Driving Instructor:"/>
+            <Label Content="Driving Instructor:" VerticalAlignment="Center" Grid.Row="2" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" />
             <TextBox x:Name="drivingInstructorTextBox" Width="120" VerticalAlignment="Center" Text="{Binding DrivingInstructor, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="3" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Driving School:"/>
-            <ComboBox x:Name="drivingSchoolComboBox" Width="120" VerticalAlignment="Center" Grid.Row="3" Margin="2.667,5,0,5"  ItemsSource="{Binding Source={StaticResource DrivingSchoolEnum}}" Height="Auto" HorizontalAlignment="Left" DisplayMemberPath="DrivingSchool" Grid.Column="1">
-                <ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel/>
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>
-            </ComboBox>
+            <ComboBox x:Name="drivingSchoolComboBox" VerticalAlignment="Center" Grid.Row="3" Margin="2.333,5,0.333,5"  ItemsSource="{Binding Source={StaticResource DrivingSchoolEnum}}" Height="Auto" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="4" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="First Name:"/>
             <TextBox x:Name="firstNameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
             <TextBox x:Name="lastNameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="8" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="5" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Gearbox:"/>
-            <ComboBox x:Name="gearboxComboBox" Width="120" VerticalAlignment="Center" Grid.Row="5" Margin="2.667,5,0,5"  ItemsSource="{Binding Source={StaticResource GearboxEnum}}" Height="Auto" HorizontalAlignment="Left" DisplayMemberPath="Gearbox" Grid.Column="1">
-                <ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel/>
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>
-            </ComboBox>
+            <Label Content="Gearbox:" VerticalAlignment="Center" Grid.Row="5" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" />
+            <ComboBox x:Name="gearboxComboBox" Width="120" VerticalAlignment="Center" Grid.Row="5" Margin="2.667,5,0,5"  ItemsSource="{Binding Source={StaticResource GearboxEnum}}" Height="Auto" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="6" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Gender:"/>
-            <ComboBox x:Name="genderComboBox" Width="120" VerticalAlignment="Center" Grid.Row="6" Margin="2.667,5,0,5"  ItemsSource="{Binding Source={StaticResource GenderEnum}}" Height="Auto" HorizontalAlignment="Left" DisplayMemberPath="Gender" Grid.Column="1">
-                <ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel/>
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>
-            </ComboBox>
+            <ComboBox x:Name="genderComboBox" Width="120" VerticalAlignment="Center" Grid.Row="6" Margin="2.667,5,0,5"  ItemsSource="{Binding Source={StaticResource GenderEnum }}" Height="Auto" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="7" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="ID:"/>
             <TextBox x:Name="iDTextBox" Width="120" VerticalAlignment="Center" Text="{Binding ID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="8" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Last Name:"/>
@@ -104,7 +86,7 @@
             <Label VerticalAlignment="Center" Grid.Row="10" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Phone Number:"/>
             <TextBox x:Name="phoneNumberTextBox" Width="120" VerticalAlignment="Center" Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="10" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="11" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Vehicle Type:"/>
-            <ComboBox x:Name="vehicleComboBox" Width="120" VerticalAlignment="Center" Grid.Row="11" Margin="2.667,4,0,4" ItemsSource="{Binding Source={StaticResource VehicleTypeEnum},Mode=TwoWay, Path=.}" FontSize="10" Foreground="Black" Height="24" HorizontalAlignment="Left" DisplayMemberPath="VehicleType" Grid.Column="1"/>
+            <ComboBox x:Name="vehicleComboBox" Width="120" VerticalAlignment="Center" Grid.Row="11" Margin="2.667,4,0,4"  ItemsSource="{Binding Source={StaticResource VehicleTypeEnum},Mode=TwoWay, Path=.}" FontSize="15" Foreground="Black" Height="24" HorizontalAlignment="Left"  Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="12" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="City:"/>
             <TextBox x:Name="cityTextBox" Width="120" VerticalAlignment="Center" Grid.Row="12" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="13" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Number:"/>

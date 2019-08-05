@@ -8,19 +8,31 @@ namespace BE
 {
     public enum Gender 
     {
-        MALE, FEMALE  
+        MALE,
+        FEMALE
+            
     }
     public enum Gearbox
     {
-        AUTOMATIC, MANUAL
+        AUTOMATIC,
+        MANUAL
     }
     public enum VehicleType
     {
-        PRIVATE_VEHICLE, TWO_WHEELED, MEDIUM_SIZED_TRUCK, HEAVY_TRUCK
+        PRIVATE_VEHICLE,
+        TWO_WHEELED,
+        MEDIUM_SIZED_TRUCK,
+        HEAVY_TRUCK
     }
     public enum DrivingSchool
     {
-        JERUSALEM, TEL_AVIV, HAIFA, MODIIN, ASHKELON, BEER_SHEVA, EILAT
+        JERUSALEM,
+        TEL_AVIV,
+        HAIFA,
+        MODIIN,
+        ASHKELON,
+        BEER_SHEVA,
+        EILAT
 
     }
     

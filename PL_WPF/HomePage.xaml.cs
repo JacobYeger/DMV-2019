@@ -24,17 +24,40 @@ namespace PL_WPF
             InitializeComponent();
         }
 
-
+        //Trainees
         private void AddTraineeButton(object sender, RoutedEventArgs e)
         {
             AddTrainee addTrainee = new AddTrainee();
             addTrainee.Show();
 
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void UpdateTraineeButton(object sender, RoutedEventArgs e)
         {
-           
+            //to do
         }
+
+        private void DeleteTraineeButton(object sender, RoutedEventArgs e)
+        {
+            //to do
+        }
+
+        //Testers
+        private void AddTesterButton(object sender, RoutedEventArgs e)
+        {
+            AddTester addTester = new AddTester(); //create instance of the window
+            addTester.Show(); //open the window
+        }
+
+        private void UpdateTesterButton(object sender, RoutedEventArgs e)
+        {
+            //to do
+        }
+
+        private void DeleteTesterButton(object sender, RoutedEventArgs e)
+        {
+            //to do
+        }
+
+  
     }
 }
