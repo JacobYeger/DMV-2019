@@ -23,5 +23,7 @@ namespace PL_WPF
         {
             InitializeComponent();
         }
+
+        
     }
 }

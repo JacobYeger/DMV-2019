@@ -7,7 +7,7 @@
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PL_WPF.AddTester"
     xmlns:codeg="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="AddTester" Height="600" Width="350" Loaded="Window_Loaded">
+        Title="AddTester" Height="500" Width="300" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="testerViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Tester}, CreateList=True}"/>
         <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type codeg:Enum}" x:Key="GenderEnum">
@@ -93,7 +93,7 @@
             
             
             <!--Finish button-->
-            <Button Content="Finish" Width="auto" Grid.Row="13" Grid.ColumnSpan="2" Height="auto" Click="Finish"/>
+            <Button Content="Finish" Width="auto" Grid.Row="13" Grid.ColumnSpan="2" Height="50" Click="Finish"/>
         </Grid>
     </Grid>
 </Window>

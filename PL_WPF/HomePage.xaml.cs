@@ -38,7 +38,7 @@ namespace PL_WPF
 
         private void DeleteTraineeButton(object sender, RoutedEventArgs e)
         {
-            //to do
+             //to do
         }
 
         //Testers
