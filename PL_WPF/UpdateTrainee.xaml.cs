@@ -12,44 +12,31 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Net.Mail;
-using DAL;
 using BE;
+using DAL;
 
 namespace PL_WPF
 {
     /// <summary>
-    /// Interaction logic for AddTrainee.xaml
+    /// Interaction logic for UpdateTrainee.xaml
     /// </summary>
-    public partial class AddTrainee : Window
+    public partial class UpdateTrainee : Window
     {
-        public AddTrainee()
+        public UpdateTrainee()
         {
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
-        {
-
-            System.Windows.Data.CollectionViewSource traineeViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("traineeViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // traineeViewSource.Source = [generic data source]
-        }
-
         private void finish(object sender, RoutedEventArgs e)
         {
-            Trainee trainee = new Trainee();            
+            Trainee trainee = new Trainee();
             trainee.ID = iDTextBox.Text;
             trainee.FirstName = firstNameTextBox.Text;
             trainee.LastName = lastNameTextBox.Text;
             trainee.Birthday = birthdayDatePicker.SelectedDate.Value.Date;
             //email
             MailAddress email = new MailAddress(EmailTextBox.Text);
-            trainee.Email = email;
+            trainee.Email =  email;
             String city = cityTextBox.Text;
             String street = streetTextBox.Text;
             int number = int.Parse(numberTextBox.Text);
@@ -69,10 +56,11 @@ namespace PL_WPF
             trainee.NumDrivingLessonsPassed = int.Parse(numDrivingLessonsPassedTextBox.Text);
             Console.WriteLine(trainee);
             //add trainee
-            Dal_imp dal_Imp= new Dal_imp();
-            dal_Imp.AddTrainee(trainee);
-            Console.WriteLine(dal_Imp.GetTrainees());
+            Dal_imp dal_Imp = new Dal_imp();
+            dal_Imp.UpdateTrainee(trainee);
+            Console.WriteLine(dal_Imp.GetTrainees()); 
             this.Close();
-        }        
+
+        }
     }
 }

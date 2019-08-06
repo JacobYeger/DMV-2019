@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,36 +14,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BE;
 using DAL;
-using System.Net.Mail;
-
 namespace PL_WPF
 {
     /// <summary>
-    /// Interaction logic for AddTester.xaml
+    /// Interaction logic for UpdateTester.xaml
     /// </summary>
-    public partial class AddTester : Window
+    public partial class UpdateTester : Window
     {
-        public AddTester()
+        public UpdateTester()
         {
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-            System.Windows.Data.CollectionViewSource testerViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("testerViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // testerViewSource.Source = [generic data source]
-        }
-
-        private void Finish(object sender, RoutedEventArgs e)
+        private void finish(object sender, RoutedEventArgs e)
         {
             Tester tester = new Tester();
             tester.ID = iDTextBox.Text;
-            
 
 
-            
+
+
             tester.FirstName = firstNameTextBox.Text;
             tester.LastName = lastNameTextBox.Text;
             tester.Birthday = birthdayDatePicker.SelectedDate.Value.Date;
@@ -63,7 +54,11 @@ namespace PL_WPF
             //Trainee-specific stuff
             tester.VehicleSpecialize = (VehicleType)vehicleSpcializeComboBox.SelectedItem;
             tester.MAX_TESTS_PER_WEEK = int.Parse(MAX_TESTS_PER_WEEKTextBox.Text);
-            Console.WriteLine(tester);
+
+            //update the tester
+            Dal_imp dal_Imp = new Dal_imp();
+            dal_Imp.UpdateTester(tester);
+            //Console.WriteLine(tester);
             this.Close();
         }
     }

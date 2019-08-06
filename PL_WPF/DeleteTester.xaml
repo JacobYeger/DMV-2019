@@ -1,11 +1,11 @@
-﻿<Window x:Class="PL_WPF.DeleteTrainee"
+﻿<Window x:Class="PL_WPF.DeleteTester"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL_WPF"
         mc:Ignorable="d"
-        Title="DeleteTrainee" Height="100" Width="300">
+        Title="DeleteTester" Height="100" Width="300">
     <Grid Background="CornflowerBlue" HorizontalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height = "*"/>
@@ -13,10 +13,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock  Grid.Row="0" Background="Beige">
-            Enter the ID of the trainee to remove from the system:
+            Enter the ID of the Tester to remove from the system:
         </TextBlock>
         <TextBox Name="DeleteIDTextbox" TextAlignment="Center"  Width="150" Grid.Row="1" HorizontalAlignment="Center" Background="Beige"/>
-        <Button Content="Delete Trainee" Click="PromptAuthorization" Grid.Row="2" HorizontalAlignment="Center" Background="Beige"/>
+        <Button Content="Delete Tester" Click="PromptAuthorization" Grid.Row="2" HorizontalAlignment="Center" Background="Beige"/>
 
 
 

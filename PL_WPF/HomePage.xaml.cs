@@ -38,7 +38,8 @@ namespace PL_WPF
 
         private void DeleteTraineeButton(object sender, RoutedEventArgs e)
         {
-             //to do
+            DeleteTrainee deleteTrainee = new DeleteTrainee();
+            deleteTrainee.Show();
         }
 
         //Testers
@@ -55,9 +56,14 @@ namespace PL_WPF
 
         private void DeleteTesterButton(object sender, RoutedEventArgs e)
         {
-            //to do
+            DeleteTester deletetester = new DeleteTester();//create instance of the window
+            deletetester.Show(); //open the window                
         }
 
-  
+        private void AddTestButton(object sender, RoutedEventArgs e)
+        {
+            AddTest addTest = new AddTest();
+            addTest.Show();
+        }
     }
 }

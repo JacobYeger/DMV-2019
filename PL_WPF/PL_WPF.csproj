@@ -58,6 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddTest.xaml.cs">
+      <DependentUpon>AddTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddTester.xaml.cs">
       <DependentUpon>AddTester.xaml</DependentUpon>
     </Compile>
@@ -68,8 +71,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UpdateTester.xaml.cs">
+      <DependentUpon>UpdateTester.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateTrainee.xaml.cs">
+      <DependentUpon>UpdateTrainee.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeleteTester.xaml.cs">
+      <DependentUpon>DeleteTester.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DeleteTrainee.xaml.cs">
       <DependentUpon>DeleteTrainee.xaml</DependentUpon>
     </Compile>
@@ -124,6 +136,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AddTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddTester.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -132,11 +148,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DeleteTester.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DeleteTrainee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateTester.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateTrainee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

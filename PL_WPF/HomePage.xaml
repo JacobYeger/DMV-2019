@@ -170,7 +170,7 @@
                     </Border>
 
                     <Border BorderThickness="1" Grid.Column="0" Grid.Row="1" BorderBrush="black">
-                        <Button Content="Add Test" FontSize="18" Grid.Column="0" Grid.Row="1"/>
+                        <Button Content="Add Test" FontSize="18" Grid.Column="0" Grid.Row="1" Click="AddTestButton"/>
                     </Border>
                     <Border BorderThickness="1" Grid.Column="1" Grid.Row="1" BorderBrush="black">
                         <Button Content="Update Test" FontSize="18" Grid.Column="1" Grid.Row="1"/>
