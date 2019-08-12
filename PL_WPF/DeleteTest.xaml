@@ -1,0 +1,25 @@
+﻿<Window x:Class="PL_WPF.DeleteTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL_WPF"
+        mc:Ignorable="d"
+        Title="DeleteTest" Height="100" Width="300">
+    <Grid Background="CornflowerBlue" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "*"/>
+            <RowDefinition Height= "*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock  Grid.Row="0" Background="Beige">
+            Enter number of the test to remove it from the system:
+        </TextBlock>
+        <TextBox Name="DeleteTestTextbox" TextAlignment="Center"  Width="150" Grid.Row="1" HorizontalAlignment="Center" Background="Beige"/>
+        <Button Content="Delete Test" Click="PromptAuthorization" Grid.Row="2" HorizontalAlignment="Center" Background="Beige"/>
+
+
+
+
+    </Grid>
+</Window>

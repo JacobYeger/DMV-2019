@@ -8,6 +8,46 @@
         Title="HomePage" Height="450" Width="800">
     <Grid>
         <TabControl TabStripPlacement="Left" Background="LightCyan" BorderBrush="Green">
+            <TabItem Header="Home">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="32" Grid.Row="0" Grid.ColumnSpan="3" FontFamily="Times New Roman">
+                        Thank you for joining our licensing program! <LineBreak/>
+                        We are dedicated to servicing all of your needs- <LineBreak/>
+                        whether you are a new trainnee or a seasoned instructor!
+                    </TextBlock>
+                    
+                    
+                    <Border Grid.Column="0" Grid.Row="1" BorderBrush="Black" BorderThickness="2">
+                        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" FontSize="24" TextWrapping="Wrap">
+                        The Testers tab is for Testers who wish to sign up with us, update their information, or remove themselves from the system.
+                        </TextBlock>
+                    </Border>
+
+                    <Border Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="2">
+                        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" FontSize="24" TextWrapping="Wrap">                        
+                       The Trainees tab is for trainees who wish to sign uo for a test update their information or delete themselves from the system.
+                    </TextBlock>
+                    </Border>
+                    
+                    <Border Grid.Column="2" Grid.Row="1" BorderBrush="Black" BorderThickness="2">
+                    <TextBlock Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" FontSize="24" TextWrapping="Wrap"> 
+                        The Test tab is there to add or delete tests from the system- and for testers to update tests that are already in the system.
+                    </TextBlock>
+                    </Border>
+                </Grid>
+            </TabItem>
+            
+            <!--Testers-->
             <TabItem Header="Testers">
                 <Grid Background="DeepSkyBlue">
                     <Grid.ColumnDefinitions>
@@ -143,7 +183,7 @@
                             Finished with your lessons and ready to sign up for the test?<LineBreak/>
                            
                             <LineBreak/>
-                            Click below to pair up with a tester and scheuld your examination!
+                            Click below to pair up with a tester and schedule your examination!
                         </TextBlock>
                     </Border>
 
@@ -163,7 +203,7 @@
                         <TextBlock Margin="5" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
                             Decided you don't want to take the test?<LineBreak/>
                             <LineBreak/>
-                            Not a Rproblem! <LineBreak/>
+                            Not a Problem!<LineBreak/> 
                             <LineBreak/>
                             Click below to cancel your test appointment!
                         </TextBlock>
@@ -173,10 +213,10 @@
                         <Button Content="Add Test" FontSize="18" Grid.Column="0" Grid.Row="1" Click="AddTestButton"/>
                     </Border>
                     <Border BorderThickness="1" Grid.Column="1" Grid.Row="1" BorderBrush="black">
-                        <Button Content="Update Test" FontSize="18" Grid.Column="1" Grid.Row="1"/>
+                        <Button Content="Update Test" FontSize="18" Grid.Column="1" Grid.Row="1" Click="UpdateTestButton"/>
                     </Border>
                     <Border BorderThickness="1" Grid.Column="2" Grid.Row="1" BorderBrush="black">
-                        <Button Content="Delete Test" FontSize="18"  Grid.Column ="2" Grid.Row="1"/>
+                        <Button Content="Delete Test" FontSize="18"  Grid.Column ="2" Grid.Row="1" Click="DeleteTestButton"/>
                     </Border>
                 </Grid>
             </TabItem>

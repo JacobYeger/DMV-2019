@@ -47,7 +47,9 @@ namespace DAL
             Test TestToAdd = (Test)drivingTest.Clone();
             TestToAdd.TestNumber = (++Configuration.CurrentTestNumber).ToString();
             DAL.DataSource.getTests.Add(TestToAdd);
+            //Console.WriteLine(TestToAdd);
             return true;
+            
         }
         /*
         public bool RemoveTrainee(Trainee trainee)

@@ -51,7 +51,8 @@ namespace PL_WPF
 
         private void UpdateTesterButton(object sender, RoutedEventArgs e)
         {
-            //to do
+            UpdateTester updateTester = new UpdateTester();
+            updateTester.Show();
         }
 
         private void DeleteTesterButton(object sender, RoutedEventArgs e)
@@ -64,6 +65,18 @@ namespace PL_WPF
         {
             AddTest addTest = new AddTest();
             addTest.Show();
+        }
+
+        private void DeleteTestButton(object sender, RoutedEventArgs e)
+        {
+            DeleteTest deleteTest = new DeleteTest();
+            deleteTest.Show();
+        }
+
+        private void UpdateTestButton(object sender, RoutedEventArgs e)
+        {
+            UpdateTest updateTest = new UpdateTest();
+            updateTest.Show();
         }
     }
 }

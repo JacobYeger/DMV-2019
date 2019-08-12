@@ -13,40 +13,30 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BE;
 using DAL;
-
 namespace PL_WPF
 {
     /// <summary>
-    /// Interaction logic for AddTest.xaml
+    /// Interaction logic for UpdateTest.xaml
     /// </summary>
-    public partial class AddTest : Window
+    public partial class UpdateTest : Window
     {
-        public AddTest()
+        public UpdateTest()
         {
             InitializeComponent();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-            System.Windows.Data.CollectionViewSource testViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("testViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // testViewSource.Source = [generic data source]
         }
 
         private void finish(object sender, RoutedEventArgs e)
         {
             Test test = new Test();
-            //string TestTime = TestTimePicker.SelectedValue.ToString();
-            //Console.WriteLine(TestTime);
-
+            
+            test.TestNumber = TestNumberTextBox.Text;
             //will set the date and time for the test to the date which was selected and the time selected from the combo box
             test.TestTime = Convert.ToDateTime(testDateDatePicker.SelectedDate.Value.ToShortDateString() + " " + TestTimePicker.SelectedValue.ToString());
             test.TestStartPoint = new Address
             {
                 City = cityTextBox.Text,
                 Number = int.Parse(numberTextBox.Text),
-                Street = streetTextBox.Text               
+                Street = streetTextBox.Text
             };
             test.MaintainingDistance = maintainingDistanceCheckBox.IsChecked == true;
             test.MirrorChecking = mirrorCheckingCheckBox.IsChecked == true;
@@ -54,8 +44,9 @@ namespace PL_WPF
             test.Signaling = signalingCheckBox.IsChecked == true;
             test.TestDate = testDateDatePicker.SelectedDate.Value.Date;
             Dal_imp dal_Imp = new Dal_imp();
-            dal_Imp.AddDrivingTest(test);
+            dal_Imp.UpdateDrivingTest(test);
             Console.WriteLine(test.TestTime);
+
             this.Close();
         }
     }
