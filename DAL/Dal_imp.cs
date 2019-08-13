@@ -51,17 +51,7 @@ namespace DAL
             return true;
             
         }
-        /*
-        public bool RemoveTrainee(Trainee trainee)
-        {
-            foreach (var item in DataSource.Trainees)
-            {
-                if (item.ID == trainee.ID)
-                    return DataSource.Trainees.Remove(item);
-            }
-            return false;
-        }
-        */
+       
         public bool RemoveTrainee(Trainee trainee)
         {
             //find the bad trainee from within the list of trainees
@@ -126,16 +116,7 @@ namespace DAL
             return true;
         }
 
-        /*  public List<Trainee> GetAllTrainees()
-          {
-              List<Trainee> result = new List<Trainee>();
-              foreach (var item in DataSource.trainees)
-              {
-                  result.Add(item.Clone());
-              }
-              return result;
-          }
-          */
+        
         //returns the list of driving tests
         public List<Test> GetDrivingTests(Func<Test, bool> p = null)
         {

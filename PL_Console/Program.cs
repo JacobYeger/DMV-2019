@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using DAL;
 using System.Net.Mail;
+using BL;
+using System.IO;
+using System.Net;
+using System.Xml;
 
 namespace PL_Console
 {
@@ -16,11 +20,15 @@ namespace PL_Console
         {
             DAL.Dal_imp D = new DAL.Dal_imp();
 
+            Address addr = new Address { Number = 624, Street = "Derby ave", City = "woodmere" };
+            Address addr2 = new Address { Number = 530, Street = "Oakland ave", City = "cedarhurst" };
+            myBL mb = new myBL();
+
+            Console.WriteLine(mb.distance(addr, addr2));
+            Console.ReadKey();
+            
             List<Test> lst;
-            /*foreach(Tester tstr in lst)
-            {
-                Console.WriteLine(tstr);
-            }*/
+          
 
             Tester Tester3 = new BE.Tester
             {
@@ -45,13 +53,6 @@ namespace PL_Console
 
             D.AddTester(Tester3);
 
-            //Console.WriteLine("----------------------------------------------------");
-
-            //lst = D.GetTesters();
-            /*foreach(Tester tstr in lst)
-            {
-                Console.WriteLine(tstr);
-            }*/
 
             Test Test1 = new Test{
                 TesterIdNumber = "628070922",
@@ -119,6 +120,8 @@ namespace PL_Console
             
             Console.WriteLine("Foo");
             Console.ReadKey();
+            
         }
+
     }
 }

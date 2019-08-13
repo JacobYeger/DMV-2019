@@ -23,7 +23,7 @@
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="32" Grid.Row="0" Grid.ColumnSpan="3" FontFamily="Times New Roman">
                         Thank you for joining our licensing program! <LineBreak/>
                         We are dedicated to servicing all of your needs- <LineBreak/>
-                        whether you are a new trainnee or a seasoned instructor!
+                        whether you are a new trainee or a seasoned instructor!
                     </TextBlock>
                     
                     

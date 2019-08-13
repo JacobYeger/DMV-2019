@@ -26,10 +26,9 @@ namespace PL_WPF
         {
             InitializeComponent();
         }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            
             System.Windows.Data.CollectionViewSource testerViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("testerViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             // testerViewSource.Source = [generic data source]
@@ -37,34 +36,123 @@ namespace PL_WPF
 
         private void Finish(object sender, RoutedEventArgs e)
         {
-            Tester tester = new Tester();
-            tester.ID = iDTextBox.Text;
-            
+            Tester tester = new Tester(); //instantiate a tester 
+            Dal_imp dal_Imp = new Dal_imp(); //create instance of dal implementation
+            bool flag = true; //flag to ensure all fields have been filled
+          
+            if (iDTextBox.Text.Equals(String.Empty))
+            {
+                MessageBox.Show("Must enter ID number");
+                flag = false;
+            }
+            else
+            {
+                tester.ID = iDTextBox.Text;
+            }
 
-
-            
+            if (firstNameTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Must enter a first name");
+                flag = false;
+            }
             tester.FirstName = firstNameTextBox.Text;
+
+            if (lastNameTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Must enter a last name");
+                flag = false;
+            }
             tester.LastName = lastNameTextBox.Text;
+
+            if(birthdayDatePicker.SelectedDate == null)
+            {
+                MessageBox.Show("Must select a birthday");
+                flag = false;
+            }
             tester.Birthday = birthdayDatePicker.SelectedDate.Value.Date;
+
             //email
+            if(EmailTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Must enter email");
+                flag = false;
+            }
             MailAddress email = new MailAddress(EmailTextBox.Text);
+
             tester.Email = email;
+
+            if(cityTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Must enter city");
+                flag = false;
+            }
             String city = cityTextBox.Text;
+
+            if (streetTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Must enter a street");
+                flag = false;
+            }
             String street = streetTextBox.Text;
+
+            if (numberTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Must enter number");
+                flag = false;
+            }
             int number = int.Parse(numberTextBox.Text);
+
             tester.Address = new Address
             {
                 Number = number,
                 Street = street,
                 City = city
             };
+
+            if(genderComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Must select a gender");
+                flag = false;
+            }
             tester.Gender = (Gender)genderComboBox.SelectedItem;
+
+            if (phoneNumberTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Must enter a phone number");
+                flag = false;
+            }
             tester.PhoneNumber = phoneNumberTextBox.Text;
-            //Trainee-specific stuff
+
+            //Tester-specific stuff
+            if(vehicleSpcializeComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Must slect a vehicle to specialize");
+                flag = false;
+            }
             tester.VehicleSpecialize = (VehicleType)vehicleSpcializeComboBox.SelectedItem;
+            if (MAX_TESTS_PER_WEEKTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Must enter maximum tests per week");
+                flag = false;
+            }
             tester.MAX_TESTS_PER_WEEK = int.Parse(MAX_TESTS_PER_WEEKTextBox.Text);
+
+            //try-catch to send the correct mesage to the user
+            try
+            {
+                dal_Imp.AddTester(tester);
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+
             Console.WriteLine(tester);
-            this.Close();
+
+            if (flag)
+            {
+                this.Close();
+            }
         }
     }
 }
