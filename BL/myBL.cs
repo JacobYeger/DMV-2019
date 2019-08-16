@@ -91,7 +91,7 @@ namespace BL
 
             Func<Tester,bool> anon2 = (Tester tstr) => (tstr.ID == drivingTest.TesterIdNumber);
             Tester tester = dl.GetTesters(anon2).FirstOrDefault();
-
+            
             //It is not possible to add a test before 7 days have passed from the trainee’s previous test (if any).
             IEnumerable<Test> result = from t in dl.GetDrivingTests()
                                        where (t.TraineeIdNumber == trainee.ID)
@@ -114,7 +114,7 @@ namespace BL
 
             // It is not possible to add a tester to the test if the tester has exceeded the number of weekly tests he can perform.
             result = from t in dl.GetDrivingTests()
-                     where (t.TesterIdNumber = tester.ID && (drivingTest.TestDate.Subtract(t.TestDate).TotalDays < 7))
+                     where (t.TesterIdNumber == tester.ID && (drivingTest.TestDate.Subtract(t.TestDate).TotalDays < 7))
                      select t.Clone();
 
             if (result.ToList().Count < tester.MAX_TESTS_PER_WEEK)
