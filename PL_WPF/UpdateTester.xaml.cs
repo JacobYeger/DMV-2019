@@ -56,8 +56,8 @@ namespace PL_WPF
             tester.MAX_TESTS_PER_WEEK = int.Parse(MAX_TESTS_PER_WEEKTextBox.Text);
 
             //update the tester
-            Dal_imp dal_Imp = new Dal_imp();
-            dal_Imp.UpdateTester(tester);
+            myDAL md = new myDAL();
+            md.UpdateTester(tester);
             //Console.WriteLine(tester);
             this.Close();
         }

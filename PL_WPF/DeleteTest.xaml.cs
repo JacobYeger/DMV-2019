@@ -27,15 +27,15 @@ namespace PL_WPF
 
         private void PromptAuthorization(object sender, RoutedEventArgs e)
         {
-            Dal_imp dal_Imp = new Dal_imp();
+            myDAL md = new myDAL();
             Test test = new Test();
             test.TestNumber = DeleteTestTextbox.Text;
-            bool close = dal_Imp.RemoveTest(test);
+            bool close = md.RemoveTest(test);
             if (close)
             {
                 this.Close();
             }
-            List<Test> Lst = dal_Imp.GetDrivingTests();
+            List<Test> Lst = md.GetDrivingTests();
             foreach (Test tst in Lst)
             {
                 Console.WriteLine(tst);

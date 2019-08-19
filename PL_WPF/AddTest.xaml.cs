@@ -53,8 +53,8 @@ namespace PL_WPF
             test.ParkingInReverse = parkingInReverseCheckBox.IsChecked == true;
             test.Signaling = signalingCheckBox.IsChecked == true;
             test.TestDate = testDateDatePicker.SelectedDate.Value.Date;
-            Dal_imp dal_Imp = new Dal_imp();
-            dal_Imp.AddDrivingTest(test);
+            myDAL md = new myDAL();
+            md.AddDrivingTest(test);
             Console.WriteLine(test.TestTime);
             this.Close();
         }

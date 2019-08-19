@@ -25,8 +25,8 @@
                         We are dedicated to servicing all of your needs- <LineBreak/>
                         whether you are a new trainee or a seasoned instructor!
                     </TextBlock>
-                    
-                    
+
+
                     <Border Grid.Column="0" Grid.Row="1" BorderBrush="Black" BorderThickness="2">
                         <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" FontSize="24" TextWrapping="Wrap">
                         The Testers tab is for Testers who wish to sign up with us, update their information, or remove themselves from the system.
@@ -35,25 +35,25 @@
 
                     <Border Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="2">
                         <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" FontSize="24" TextWrapping="Wrap">                        
-                       The Trainees tab is for trainees who wish to sign uo for a test update their information or delete themselves from the system.
-                    </TextBlock>
+                       The Trainees tab is for trainees who wish to sign up for a test update their information or delete themselves from the system.
+                        </TextBlock>
                     </Border>
-                    
+
                     <Border Grid.Column="2" Grid.Row="1" BorderBrush="Black" BorderThickness="2">
-                    <TextBlock Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" FontSize="24" TextWrapping="Wrap"> 
+                        <TextBlock Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" FontSize="24" TextWrapping="Wrap"> 
                         The Test tab is there to add or delete tests from the system- and for testers to update tests that are already in the system.
-                    </TextBlock>
+                        </TextBlock>
                     </Border>
                 </Grid>
             </TabItem>
-            
+
             <!--Testers-->
             <TabItem Header="Testers">
                 <Grid Background="DeepSkyBlue">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width = "*" />
                         <ColumnDefinition Width = "*" />
-                        <ColumnDefinition Width = "*" />                     
+                        <ColumnDefinition Width = "*" />
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
@@ -104,7 +104,7 @@
                         <Button Content="Delete Tester" FontSize="18"  Grid.Column ="2" Grid.Row="1" Click="DeleteTesterButton"/>
                     </Border>
                 </Grid>
-              
+
 
             </TabItem>
             <TabItem Header="Trainees" >

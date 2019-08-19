@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using BE;
 using DAL;
 
-namespace DBL
+namespace BL
 {
     public interface IBL
     {
@@ -26,8 +26,27 @@ namespace DBL
         bool UpdateDrivingTest(Test drivingTest);
 
         List<Tester> GetTesters(Func<Tester, bool> p);
-        List<Trainee> GetTrainees(Func<Trainee, bool> p);
-        List<Test> GetDrivingTests(Func<Test, bool> p);
+        List<Trainee> GetTrainees(Func<Trainee, bool> p );
+
+        //A function that can return all tests that meet a specific condition (i.e. the function accepts a delegate that matches the 
+        //functions that receive a test and returns bool, and thus the condition is defined)
+        List<Test> GetDrivingTests(Func<Test, bool> p = null);
+
+        //A function that receives a date and time and returns all testers who are available
+        //at that time.The function will check whether the date and time are the tester's
+        //working hours and whether the tester is giving another test at that time
+        List<Tester> GetTestersAvailableAtTime(DateTime time);
+
+        //A function that a receives a trainee number, and returns the number of tests he took
+        int TestsTakenByTrainee(Trainee trainee);
+
+        //A function that a receives a trainee number and returns if he is entitled to a driving license(if he has passed a driving test).
+        bool IsEntitledToLicense(Trainee trainee);
+
+        // A group of testers according to type of specialization
+        List<Tester> GetTestersGroupedBySpecialty(bool sort = false);
+
+
 
     }
 }

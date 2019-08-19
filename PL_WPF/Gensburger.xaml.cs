@@ -63,5 +63,10 @@ namespace PL_WPF
         private void TrainerCbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
         }
+
+        private void LuzDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

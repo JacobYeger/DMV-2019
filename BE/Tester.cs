@@ -15,7 +15,9 @@ namespace BE
         //public Array WorkDays; //matrix representing days of the week needs to be implemented
         public int Max_Distance { get; set; } //max distance from his house (in Kilometers) that he will give a test
 
-        public override string ToString()
+        public bool[,] AvailabilityMatrix = new bool[5, 8];
+
+        public override string ToString()   
         {
             string result = "";
             //base refers to the class trainee inherits from (person)

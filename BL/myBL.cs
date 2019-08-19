@@ -10,10 +10,12 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Net;
 using System.Xml;
+using System.ComponentModel;
+using System.Threading;
 
 namespace BL
 {
-    public class myBL
+    public class myBL: IBL
     {
         IDAL dal = FactoryDAL.getInstance();
         //public List<Trainee> allTrainees()
@@ -21,6 +23,8 @@ namespace BL
         //some verification validation and more ...
         //return dal.getTrainees();
         //}
+        public System.ComponentModel.BackgroundWorker backgroundWorker1;
+        List<Tester> ListOfTestersInProximity;
 
         //tester interface
         public bool AddTester(Tester tester)
@@ -85,7 +89,7 @@ namespace BL
         //Driving test interface
         public bool AddDrivingTest(Test drivingTest)
         {
-            Dal_imp dl = new Dal_imp();
+            myDAL dl = new myDAL();
             Func<Trainee, bool> anon = (Trainee trn) => (trn.ID == drivingTest.TraineeIdNumber);
             Trainee trainee = dl.GetTrainees(anon).FirstOrDefault();
 
@@ -121,6 +125,44 @@ namespace BL
             {
                 return false;
             }
+
+            //Two tests at the same time cannot be set up for the tester/ trainee
+            result = from t in dl.GetDrivingTests()
+                     where (t.TesterIdNumber == tester.ID && t.TestDate == drivingTest.TestDate && t.TestTime == drivingTest.TestTime)
+                     select (Test)t.Clone();
+            //If there are any tests with this tester at this time
+            if(result.ToList<Test>().Count != 0)
+            {
+                return false;
+            }
+
+            result = from t in dl.GetDrivingTests()
+                     where (t.TraineeIdNumber == trainee.ID && t.TestDate == drivingTest.TestDate && t.TestTime == drivingTest.TestTime)
+                     select (Test)t.Clone();
+            //If there are any tests with this trainee at this time
+            if (result.ToList<Test>().Count != 0)
+            {
+                return false;
+            }
+
+            //• It is not possible to set up a test on a type of vehicle for a student who has already passed a driving test on that type of vehicle.
+            result = from t in dl.GetDrivingTests()
+                     //Todo: Add VehicleType property to test, uncomment line below
+                     //where (t.TraineeIdNumber == trainee.ID && t.VehicleType = drivingTest.VehicleType && t.TestResult == 1)
+                     select (Test)t.Clone();
+            //If there are any tests with this trainee and this vehicle type where he passed
+            if (result.ToList<Test>().Count != 0)
+            {
+                return false;
+            }
+
+            // In setting up a test, the type of vehicle on which the trainee studied and the tester’s specialty must match
+
+            if(trainee.VehicleType != tester.VehicleSpecialize)
+            {
+                return false;
+            }
+            //If he has not violated any of the above rules
             return true;
         }
 
@@ -138,7 +180,7 @@ namespace BL
         //Location
         public List<Tester> getTestersWithinDistance(Address addr, int kilometers)
         {
-            Dal_imp di = new Dal_imp();
+            myDAL md = new myDAL();
             /*
              * bool anonymousFunc(tester){
              *      if(tester.addr-addr < 40){
@@ -146,11 +188,18 @@ namespace BL
              *      }
              * }
              */
-            Func<Tester, bool> anon = (Tester tstr) => (distance(tstr.Address, addr) < kilometers);
-            return di.GetTesters();
+            backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
+            backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker1_RunWorkerCompleted);
+            
+            Func<Tester, bool> anon = (Tester tstr) => (Distance(tstr.Address, addr) < kilometers);
+            backgroundWorker1.RunWorkerAsync(anon);
+            //List<Tester> ListOfTestersInProximity = md.GetTesters(anon);
+            return ListOfTestersInProximity;
+           // for(i,j):
+             //   schedule[i,j] = (CheckBox)"Checkbox{i}{j}".ischecked
         }
 
-        public double distance(Address from, Address to)
+        public double Distance(Address from, Address to)
         {
             string origin = from.Number + " " + from.Street + " " + from.City;
             string destination = to.Number + " " + to.Street + " " + to.City;
@@ -206,5 +255,92 @@ namespace BL
             }
             return int.MaxValue;
         }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            myDAL md = new myDAL();
+            Func<Tester, bool> anon = (Func<Tester, bool>)e.Argument;
+            e.Result = md.GetTesters(anon);
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            // First, handle the case where an exception was thrown.
+            if (e.Error != null)
+            {
+                throw new Exception(e.Error.Message);
+            }
+            else if (e.Cancelled)
+            {
+                // Next, handle the case where the user canceled 
+                // the operation.
+                // Note that due to a race condition in 
+                // the DoWork event handler, the Cancelled
+                // flag may not have been set, even though
+                // CancelAsync was called.
+            }
+            else
+            {
+                // Finally, handle the case where the operation 
+                // succeeded.
+                ListOfTestersInProximity = (List<Tester>)e.Result;
+            }
+        }
+
+        public List<Tester> GetTesters(Func<Tester, bool> p = null)
+        {
+            myDAL md = new myDAL();
+            return md.GetTesters(p);
+        }
+
+        public List<Trainee> GetTrainees(Func<Trainee, bool> p = null)
+        {
+            myDAL md = new myDAL();
+            return md.GetTrainees(p);
+        }
+
+        public List<Test> GetDrivingTests(Func<Test, bool> p = null)
+        {
+            myDAL md = new myDAL();
+            return md.GetDrivingTests(p);
+        }
+
+        public List<Tester> GetTestersAvailableAtTime(DateTime time)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int TestsTakenByTrainee(Trainee trainee)
+        {
+            myDAL dl = new myDAL();
+            IEnumerable<Test> result = from t in dl.GetDrivingTests()
+                                       where (t.TraineeIdNumber == trainee.ID)
+                                       select (Test)t.Clone();
+            return result.ToList().Count;
+        }
+
+        public bool IsEntitledToLicense(Trainee trainee)
+        {
+            myDAL dl = new myDAL();
+            IEnumerable<Test> result = from t in dl.GetDrivingTests()
+                                         where (t.TraineeIdNumber == trainee.ID && t.TestResult == 1)
+                                         select (Test)t.Clone();
+            if (result.ToList().Count != 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public List<Tester> GetTestersGroupedBySpecialty(bool sort = false)
+        {
+            myDAL dl = new myDAL();
+            IEnumerable<Test> result = from t in dl.GetTesters()
+                                       group t by t.VehicleSpecialize into newGroup
+                                       select (Test)newGroup;
+            return (List<Tester>) result;
+
+        }
     }
-}
+    }

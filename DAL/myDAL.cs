@@ -7,8 +7,10 @@ using BE;
 
 namespace DAL
 {
-    internal class myDAL : IDAL
+
+    public class myDAL : IDAL
     {
+
         public bool AddTrainee(Trainee trainee)
         {
             foreach (var item in DAL.DataSource.getTrainees)
@@ -20,7 +22,7 @@ namespace DAL
                 }
             }
             //add the trainee and return true as the operation has completed
-            DAL.DataSource.getTrainees.Add(trainee.Clone());
+            DAL.DataSource.getTrainees.Add((Trainee)trainee.Clone());
             return true;
         }
 
@@ -40,30 +42,22 @@ namespace DAL
             return true;
         }
 
-
-
         public bool AddDrivingTest(Test drivingTest)
         {
-            DAL.DataSource.getTests.Add((Test)drivingTest.Clone());
+            Test TestToAdd = (Test)drivingTest.Clone();
+            TestToAdd.TestNumber = (++Configuration.CurrentTestNumber).ToString();
+            DAL.DataSource.getTests.Add(TestToAdd);
+            //Console.WriteLine(TestToAdd);
             return true;
-        }     
-        /*
-        public bool RemoveTrainee(Trainee trainee)
-        {
-            foreach (var item in DataSource.Trainees)
-            {
-                if (item.ID == trainee.ID)
-                    return DataSource.Trainees.Remove(item);
-            }
-            return false;
+
         }
-        */
+
         public bool RemoveTrainee(Trainee trainee)
         {
             //find the bad trainee from within the list of trainees
             Trainee BadTrainee = (from T in DAL.DataSource.getTrainees
-                                where (T.ID == trainee.ID)
-                                select T).FirstOrDefault();
+                                  where (T.ID == trainee.ID)
+                                  select T).FirstOrDefault();
             //return a bool value if the trainees is succesfuly removed       
             return DAL.DataSource.getTrainees.Remove(BadTrainee);
         }
@@ -82,8 +76,8 @@ namespace DAL
         {
             //find the bad test from within the list of tests
             Test BadTest = (from T in DAL.DataSource.getTests
-                                where (T.TestNumber == test.TestNumber)
-                                select T).FirstOrDefault();
+                            where (T.TestNumber == test.TestNumber)
+                            select T).FirstOrDefault();
             //return a bool value if the test is succesfuly removed
             return DAL.DataSource.getTests.Remove(BadTest);
         }
@@ -93,7 +87,6 @@ namespace DAL
             var x = (from d in DAL.DataSource.getTests
                      where (d.TestNumber == drivingTest.TestNumber)
                      select d).FirstOrDefault();
-
             //x.Tester_ID = drivingTest.Tester_ID;
             //x.StartingPoint = drivingTest.StartingPoint;
 
@@ -115,24 +108,15 @@ namespace DAL
         public bool UpdateTrainee(Trainee trainee)
         {
             var x = (from d in DAL.DataSource.getTrainees
-                     where (d.ID ==trainee.ID)
+                     where (d.ID == trainee.ID)
                      select d).FirstOrDefault();
             DAL.DataSource.getTrainees.Remove(x);
-            DAL.DataSource.getTrainees.Add(trainee.Clone());
+            DAL.DataSource.getTrainees.Add((Trainee)trainee.Clone());
 
             return true;
         }
 
-        /*  public List<Trainee> GetAllTrainees()
-          {
-              List<Trainee> result = new List<Trainee>();
-              foreach (var item in DataSource.trainees)
-              {
-                  result.Add(item.Clone());
-              }
-              return result;
-          }
-          */
+
         //returns the list of driving tests
         public List<Test> GetDrivingTests(Func<Test, bool> p = null)
         {
@@ -161,12 +145,12 @@ namespace DAL
             {
                 result = from t in DAL.DataSource.getTrainees
                          where (p(t))
-                         select t.Clone();
+                         select (Trainee)t.Clone();
             }
             else
             {
                 result = from t in DAL.DataSource.getTrainees
-                         select t.Clone();
+                         select (Trainee)t.Clone();
             }
             return result.ToList();
         }

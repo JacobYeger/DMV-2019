@@ -56,9 +56,9 @@ namespace PL_WPF
             trainee.NumDrivingLessonsPassed = int.Parse(numDrivingLessonsPassedTextBox.Text);
             Console.WriteLine(trainee);
             //add trainee
-            Dal_imp dal_Imp = new Dal_imp();
-            dal_Imp.UpdateTrainee(trainee);
-            Console.WriteLine(dal_Imp.GetTrainees()); 
+            myDAL md = new myDAL();
+            md.UpdateTrainee(trainee);
+            Console.WriteLine(md.GetTrainees()); 
             this.Close();
 
         }

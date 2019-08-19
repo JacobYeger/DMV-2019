@@ -18,13 +18,13 @@ namespace PL_Console
     {
         static void Main(string[] args)
         {
-            DAL.Dal_imp D = new DAL.Dal_imp();
+            myDAL md = new myDAL();
 
             Address addr = new Address { Number = 624, Street = "Derby ave", City = "woodmere" };
             Address addr2 = new Address { Number = 530, Street = "Oakland ave", City = "cedarhurst" };
             myBL mb = new myBL();
 
-            Console.WriteLine(mb.distance(addr, addr2));
+            Console.WriteLine(mb.Distance(addr, addr2));
             Console.ReadKey();
             
             List<Test> lst;
@@ -51,7 +51,7 @@ namespace PL_Console
                 Max_Distance = 10
             };
 
-            D.AddTester(Tester3);
+            md.AddTester(Tester3);
 
 
             Test Test1 = new Test{
@@ -71,7 +71,7 @@ namespace PL_Console
                 Signaling = true
             };
 
-            D.AddDrivingTest(Test1);
+            md.AddDrivingTest(Test1);
 
             Test Test2 = new Test{
                 TesterIdNumber = "628070922",
@@ -90,7 +90,7 @@ namespace PL_Console
                 Signaling = true
             };
 
-            D.AddDrivingTest(Test2);
+            md.AddDrivingTest(Test2);
 
             Test Test3 = new Test{
                 TesterIdNumber = "628070922",
@@ -109,9 +109,9 @@ namespace PL_Console
                 Signaling = true
             };
 
-            D.AddDrivingTest(Test3);
+            md.AddDrivingTest(Test3);
 
-            lst = D.GetDrivingTests();
+            lst = md.GetDrivingTests();
 
             foreach(Test tst in lst)
             {

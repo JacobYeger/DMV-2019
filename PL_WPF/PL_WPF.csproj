@@ -74,9 +74,6 @@
     <Compile Include="DeleteTest.xaml.cs">
       <DependentUpon>DeleteTest.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Gensburger.xaml.cs">
-      <DependentUpon>Gensburger.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UpdateTest.xaml.cs">
       <DependentUpon>UpdateTest.xaml</DependentUpon>
     </Compile>
@@ -166,10 +163,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DeleteTrainee.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Gensburger.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

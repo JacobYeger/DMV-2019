@@ -37,7 +37,7 @@ namespace PL_WPF
         private void Finish(object sender, RoutedEventArgs e)
         {
             Tester tester = new Tester(); //instantiate a tester 
-            Dal_imp dal_Imp = new Dal_imp(); //create instance of dal implementation
+            myDAL dal_Imp = new myDAL(); //create instance of dal implementation
             bool flag = true; //flag to ensure all fields have been filled
           
             if (iDTextBox.Text.Equals(String.Empty))
@@ -136,9 +136,20 @@ namespace PL_WPF
                 flag = false;
             }
             tester.MAX_TESTS_PER_WEEK = int.Parse(MAX_TESTS_PER_WEEKTextBox.Text);
+            foreach (var item in Checkboxes.Children)
+            {
+                if (!(item is CheckBox))
+                {
+                    continue;
+                }
+                CheckBox checkbox = item as CheckBox;
+                int i = Grid.GetColumn(checkbox) - 1;
+                int j = Grid.GetRow(checkbox);
+                tester.AvailabilityMatrix[i, j] = (bool)checkbox.IsChecked;
 
+            }
             //try-catch to send the correct mesage to the user
-            try
+           try
             {
                 dal_Imp.AddTester(tester);
             }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Trainee : Person
+    public class Trainee : Person, ICloneable   
     {
         public VehicleType VehicleType { get; set; }//type of vehicle trainee studied on
         public Gearbox Gearbox { get; set; }//type of gearbox trainee studied on
@@ -28,6 +28,13 @@ namespace BE
             return result;
         }
 
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+
+        /*
         public Trainee Clone()
         {
             return new Trainee
@@ -46,7 +53,7 @@ namespace BE
 
 
             };
-        }
-
+            
+        }*/   
     }
 }

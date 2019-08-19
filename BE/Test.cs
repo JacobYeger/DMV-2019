@@ -32,7 +32,7 @@ namespace BE
                 }
                 else
                     Console.WriteLine(Configuration.PASSED);//prints success message
-                    return 0; 
+                    return 1; 
             }
             set { TestScore = value; } //sets value of the test score
         }

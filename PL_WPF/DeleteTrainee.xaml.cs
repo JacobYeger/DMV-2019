@@ -28,15 +28,15 @@ namespace PL_WPF
 
         private void PromptAuthorization(object sender, RoutedEventArgs e)
         {
-            Dal_imp dal_Imp = new Dal_imp();
+            myDAL md = new myDAL();
             Trainee trainee = new Trainee();
             trainee.ID = DeleteIDTextbox.Text;
-            bool close = dal_Imp.RemoveTrainee(trainee);
+            bool close = md.RemoveTrainee(trainee);
             if (close)
             {
                 this.Close();
             }
-            List<Trainee> Lst = dal_Imp.GetTrainees();
+            List<Trainee> Lst = md.GetTrainees();
             foreach (Trainee trn in Lst)
             {
                 Console.WriteLine(trn);
