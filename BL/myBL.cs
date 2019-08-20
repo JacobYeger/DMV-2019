@@ -92,9 +92,6 @@ namespace BL
             myDAL dl = new myDAL();
             Func<Trainee, bool> anon = (Trainee trn) => (trn.ID == drivingTest.TraineeIdNumber);
             Trainee trainee = dl.GetTrainees(anon).FirstOrDefault();
-
-            Func<Tester,bool> anon2 = (Tester tstr) => (tstr.ID == drivingTest.TesterIdNumber);
-            Tester tester = dl.GetTesters(anon2).FirstOrDefault();
             
             //It is not possible to add a test before 7 days have passed from the trainee’s previous test (if any).
             IEnumerable<Test> result = from t in dl.GetDrivingTests()
@@ -106,6 +103,7 @@ namespace BL
                 Test testToCompare = result.ToList().FirstOrDefault();
                 if ((drivingTest.TestDate.Subtract(testToCompare.TestDate)).Days < 7)
                 {
+                    Console.WriteLine("It is not possible to add a test before 7 days have passed from the trainee’s previous test (if any).");
                     return false;
                 }
             }
@@ -116,26 +114,7 @@ namespace BL
                 return false;
             }
 
-            // It is not possible to add a tester to the test if the tester has exceeded the number of weekly tests he can perform.
-            result = from t in dl.GetDrivingTests()
-                     where (t.TesterIdNumber == tester.ID && (drivingTest.TestDate.Subtract(t.TestDate).TotalDays < 7))
-                     select (Test)t.Clone();
-
-            if (result.ToList().Count < tester.MAX_TESTS_PER_WEEK)
-            {
-                return false;
-            }
-
             //Two tests at the same time cannot be set up for the tester/ trainee
-            result = from t in dl.GetDrivingTests()
-                     where (t.TesterIdNumber == tester.ID && t.TestDate == drivingTest.TestDate && t.TestTime == drivingTest.TestTime)
-                     select (Test)t.Clone();
-            //If there are any tests with this tester at this time
-            if(result.ToList<Test>().Count != 0)
-            {
-                return false;
-            }
-
             result = from t in dl.GetDrivingTests()
                      where (t.TraineeIdNumber == trainee.ID && t.TestDate == drivingTest.TestDate && t.TestTime == drivingTest.TestTime)
                      select (Test)t.Clone();
@@ -156,29 +135,91 @@ namespace BL
                 return false;
             }
 
-            // In setting up a test, the type of vehicle on which the trainee studied and the tester’s specialty must match
-
-            if(trainee.VehicleType != tester.VehicleSpecialize)
+            Func<Tester, bool> anon2 = (Tester tstr) => (isValidTester(tstr, trainee, drivingTest));
+            List<Tester> testerList = dl.GetTesters(anon2);
+            if(testerList.Count == 0)
             {
+                Console.WriteLine("There were no testers that matched your criteria");
                 return false;
             }
+
+            Tester tester = testerList.First();
+            drivingTest.TesterIdNumber = tester.ID;
             //If he has not violated any of the above rules
             return true;
         }
 
+        private bool isValidTester(Tester tester, Trainee trainee, Test test)
+        {
+            myDAL dl = new myDAL();
+
+            // It is not possible to add a tester to the test if the tester has exceeded the number of weekly tests he can perform.
+            IEnumerable<Test> result = from t in dl.GetDrivingTests()
+                     where (t.TesterIdNumber == tester.ID && (test.TestDate.Subtract(t.TestDate).TotalDays < 7))
+                     select (Test)t.Clone();
+
+            if (result.ToList().Count < tester.MAX_TESTS_PER_WEEK)
+            {
+                return false;
+            }
+
+            //Two tests at the same time cannot be set up for the tester/ trainee
+            result = from t in dl.GetDrivingTests()
+                     where (t.TesterIdNumber == tester.ID && t.TestDate == test.TestDate && t.TestTime == test.TestTime)
+                     select (Test)t.Clone();
+            //If there are any tests with this tester at this time
+            if (result.ToList<Test>().Count != 0)
+            {
+                return false;
+            }
+
+            // In setting up a test, the type of vehicle on which the trainee studied and the tester’s specialty must match
+            if (trainee.VehicleType != tester.VehicleSpecialize)
+            {
+                return false;
+            }
+
+            //If he has not violated any of the above rules
+            return true;
+
+
+        }
+
         public bool RemoveTest(Test drivingTest)
         {
-            return true;
+            myDAL md = new myDAL();
+            //return trueif the test id was in there, false otherwise
+            return md.RemoveTest(drivingTest);
         }
 
         public bool UpdateDrivingTest(Test drivingTest)
         {
-            return true;
-        }
+            //allows for the tester to score the test 
+            Test test = new Test();
+
+            test.TestNumber = drivingTest.TestNumber;
+            test.MaintainingDistance = drivingTest.MaintainingDistance;
+            test.MirrorChecking = drivingTest.MirrorChecking;
+            test.ParkingInReverse = drivingTest.ParkingInReverse;
+            test.Signaling = drivingTest.Signaling;
+
+            test.TestTime = drivingTest.TestTime;
+
+            test.TestStartPoint = drivingTest.TestStartPoint;
+
+            test.TestScore = drivingTest.TestScore;
+
+            test.TestersComments = drivingTest.TestersComments;
+
+            myDAL md = new myDAL();
+            //return trueif the test id was in there, false otherwise
+            md.RemoveTest(drivingTest);
+            return md.AddDrivingTest(test);
+        }   
 
 
         //Location
-        public List<Tester> getTestersWithinDistance(Address addr, int kilometers)
+        public List<Tester>  getTestersWithinDistance(Address addr, int kilometers)
         {
             myDAL md = new myDAL();
             /*

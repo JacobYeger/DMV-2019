@@ -68,7 +68,7 @@ namespace DAL
             Tester BadTester = (from T in DAL.DataSource.getTesters
                                 where (T.ID == Tester.ID)
                                 select T).FirstOrDefault();
-            //return a bool value if the Tester is succesfuly removed       
+            //return a bool value indicating if the Tester is succesfuly removed       
             return DAL.DataSource.getTesters.Remove(BadTester);
         }
 
@@ -78,7 +78,7 @@ namespace DAL
             Test BadTest = (from T in DAL.DataSource.getTests
                             where (T.TestNumber == test.TestNumber)
                             select T).FirstOrDefault();
-            //return a bool value if the test is succesfuly removed
+            //return a bool value indicating if the test is succesfuly removed
             return DAL.DataSource.getTests.Remove(BadTest);
         }
 

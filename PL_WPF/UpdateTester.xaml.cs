@@ -20,9 +20,9 @@ namespace PL_WPF
     /// <summary>
     /// Interaction logic for AddTester.xaml
     /// </summary>
-    public partial class AddTester : Window
+    public partial class UpdateTester : Window
     {
-        public AddTester()
+        public UpdateTester()
         {
             InitializeComponent();
         }
@@ -34,7 +34,7 @@ namespace PL_WPF
             // testerViewSource.Source = [generic data source]
         }
 
-        private void Finish(object sender, RoutedEventArgs e)
+        private void finish(object sender, RoutedEventArgs e)
         {
             Tester tester = new Tester(); //instantiate a tester 
             myDAL dal_Imp = new myDAL(); //create instance of dal implementation

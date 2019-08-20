@@ -37,25 +37,63 @@ namespace PL_WPF
         private void finish(object sender, RoutedEventArgs e)
         {
             Test test = new Test();
+            bool flag = true;
             //string TestTime = TestTimePicker.SelectedValue.ToString();
             //Console.WriteLine(TestTime);
 
             //will set the date and time for the test to the date which was selected and the time selected from the combo box
+            if (testDateDatePicker == null)
+            {
+                MessageBox.Show("Must select a test date");
+                flag = false;
+            }
+            else
+            {
+                test.TestDate = testDateDatePicker.SelectedDate.Value.Date;
+            }
+
+
+            if (TestTimePicker.SelectedIndex == -1)
+            {
+                MessageBox.Show("Must select a test time");
+                flag = false;
+            }
+
             test.TestTime = Convert.ToDateTime(testDateDatePicker.SelectedDate.Value.ToShortDateString() + " " + TestTimePicker.SelectedValue.ToString());
+
+            if (cityTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Must enter city");
+                flag = false;
+            }
+            String city = cityTextBox.Text;
+
+            if (streetTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Must enter a street");
+                flag = false;
+            }
+            String street = streetTextBox.Text;
+
+            if (numberTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Must enter number");
+                flag = false;
+            }
+            int number = int.Parse(numberTextBox.Text);
             test.TestStartPoint = new Address
             {
-                City = cityTextBox.Text,
-                Number = int.Parse(numberTextBox.Text),
-                Street = streetTextBox.Text               
+                City = city,
+                Number = number,
+                Street = street
             };
-            test.MaintainingDistance = maintainingDistanceCheckBox.IsChecked == true;
-            test.MirrorChecking = mirrorCheckingCheckBox.IsChecked == true;
-            test.ParkingInReverse = parkingInReverseCheckBox.IsChecked == true;
-            test.Signaling = signalingCheckBox.IsChecked == true;
-            test.TestDate = testDateDatePicker.SelectedDate.Value.Date;
+
             myDAL md = new myDAL();
-            md.AddDrivingTest(test);
+            flag = md.AddDrivingTest(test);
             Console.WriteLine(test.TestTime);
+            if (flag)
+                MessageBox.Show("The Date of your test is: " + test.TestTime.ToShortDateString() + Environment.NewLine + "The time of your test is: " + test.TestTime.ToShortTimeString() + Environment.NewLine + "Your tester number is: " + Environment.NewLine + Configuration.CurrentTestNumber);
+
             this.Close();
         }
     }

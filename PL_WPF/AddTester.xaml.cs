@@ -39,7 +39,35 @@ namespace PL_WPF
             Tester tester = new Tester(); //instantiate a tester 
             myDAL dal_Imp = new myDAL(); //create instance of dal implementation
             bool flag = true; //flag to ensure all fields have been filled
-          
+
+            //Birthday
+            if (birthdayDatePicker.SelectedDate == null)
+            {
+                MessageBox.Show("Must select a birthday");
+                flag = false;
+            }
+            else
+            {
+                tester.Birthday = birthdayDatePicker.SelectedDate.Value.Date;
+            }
+
+            //first name
+            if (firstNameTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Must enter a first name");
+                flag = false;
+            }
+            tester.FirstName = firstNameTextBox.Text;
+
+            //Last name
+            if (lastNameTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Must enter a last name");
+                flag = false;
+            }
+            tester.LastName = lastNameTextBox.Text;
+
+            //ID
             if (iDTextBox.Text.Equals(String.Empty))
             {
                 MessageBox.Show("Must enter ID number");
@@ -50,44 +78,24 @@ namespace PL_WPF
                 tester.ID = iDTextBox.Text;
             }
 
-            if (firstNameTextBox.Text.Equals(string.Empty))
+            //Gender
+            if (genderComboBox.SelectedIndex == -1)
             {
-                MessageBox.Show("Must enter a first name");
+                MessageBox.Show("Must select a gender");
                 flag = false;
             }
-            tester.FirstName = firstNameTextBox.Text;
+            tester.Gender = (Gender)genderComboBox.SelectedItem;
 
-            if (lastNameTextBox.Text.Equals(string.Empty))
-            {
-                MessageBox.Show("Must enter a last name");
-                flag = false;
-            }
-            tester.LastName = lastNameTextBox.Text;
-
-            if(birthdayDatePicker.SelectedDate == null)
-            {
-                MessageBox.Show("Must select a birthday");
-                flag = false;
-            }
-            tester.Birthday = birthdayDatePicker.SelectedDate.Value.Date;
-
-            //email
-            if(EmailTextBox.Text.Equals(string.Empty))
-            {
-                MessageBox.Show("Must enter email");
-                flag = false;
-            }
-            MailAddress email = new MailAddress(EmailTextBox.Text);
-
-            tester.Email = email;
-
-            if(cityTextBox.Text.Equals(string.Empty))
+            //Address
+            //City
+            if (cityTextBox.Text.Equals(string.Empty))
             {
                 MessageBox.Show("Must enter city");
                 flag = false;
             }
             String city = cityTextBox.Text;
 
+            //Street
             if (streetTextBox.Text.Equals(string.Empty))
             {
                 MessageBox.Show("Must enter a street");
@@ -95,6 +103,7 @@ namespace PL_WPF
             }
             String street = streetTextBox.Text;
 
+            //Number
             if (numberTextBox.Text.Equals(string.Empty))
             {
                 MessageBox.Show("Must enter number");
@@ -109,13 +118,17 @@ namespace PL_WPF
                 City = city
             };
 
-            if(genderComboBox.SelectedIndex == -1)
+            //email
+            if (EmailTextBox.Text.Equals(string.Empty))
             {
-                MessageBox.Show("Must select a gender");
+                MessageBox.Show("Must enter email");
                 flag = false;
             }
-            tester.Gender = (Gender)genderComboBox.SelectedItem;
+            MailAddress email = new MailAddress(EmailTextBox.Text);
 
+            tester.Email = email;
+
+            //Phone number
             if (phoneNumberTextBox.Text.Equals(string.Empty))
             {
                 MessageBox.Show("Must enter a phone number");
@@ -124,18 +137,45 @@ namespace PL_WPF
             tester.PhoneNumber = phoneNumberTextBox.Text;
 
             //Tester-specific stuff
-            if(vehicleSpcializeComboBox.SelectedIndex == -1)
+            //Max distance
+            if (max_DistanceTextBox.Text.Equals(string.Empty))
             {
-                MessageBox.Show("Must slect a vehicle to specialize");
+                MessageBox.Show("Must enter maximum distance");
                 flag = false;
             }
-            tester.VehicleSpecialize = (VehicleType)vehicleSpcializeComboBox.SelectedItem;
+            else
+            {
+                tester.Max_Distance = int.Parse(max_DistanceTextBox.Text);
+            }
+
+            //Max tests per week
             if (MAX_TESTS_PER_WEEKTextBox.Text.Equals(string.Empty))
             {
                 MessageBox.Show("Must enter maximum tests per week");
                 flag = false;
             }
             tester.MAX_TESTS_PER_WEEK = int.Parse(MAX_TESTS_PER_WEEKTextBox.Text);
+
+            //Vehicle specialize
+            if (vehicleSpcializeComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Must slect a vehicle to specialize");
+                flag = false;
+            }
+            else
+            {
+                tester.VehicleSpecialize = (VehicleType)vehicleSpcializeComboBox.SelectedItem;
+            }
+
+            //Years experience
+            if (yearsExperienceTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Must enter yearsof experience");
+                flag = false;
+            }
+            tester.YearsExperience = int.Parse(yearsExperienceTextBox.Text);
+
+
             foreach (var item in Checkboxes.Children)
             {
                 if (!(item is CheckBox))
@@ -145,10 +185,12 @@ namespace PL_WPF
                 CheckBox checkbox = item as CheckBox;
                 int i = Grid.GetColumn(checkbox) - 1;
                 int j = Grid.GetRow(checkbox);
+                //Console.WriteLine("i: " + i + "j: " + j);
                 tester.AvailabilityMatrix[i, j] = (bool)checkbox.IsChecked;
 
             }
-            //try-catch to send the correct mesage to the user
+
+           //try-catch to send the correct mesage to the user
            try
             {
                 dal_Imp.AddTester(tester);
