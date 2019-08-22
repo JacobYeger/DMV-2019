@@ -27,6 +27,7 @@ namespace BE
             result += string.Format("Max tests per week: {0} \n", MAX_TESTS_PER_WEEK);
             //result += string.Format("Work days: {0} \n", WorkDays);
             result += string.Format("Max distance from address: {0} \n", Max_Distance);
+            result += string.Format("Schedule: {0} \n", AvailabilityMatrix);
             return result;
         }
         public Tester Clone()

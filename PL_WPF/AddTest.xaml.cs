@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BE;
 using DAL;
+using BL;
 
 namespace PL_WPF
 {
@@ -88,8 +89,9 @@ namespace PL_WPF
                 Street = street
             };
 
-            myDAL md = new myDAL();
-            flag = md.AddDrivingTest(test);
+            myBL mb = new myBL();
+            test.TestNumber = "0";
+            flag = mb.AddDrivingTest(test);
             Console.WriteLine(test.TestTime);
             if (flag)
                 MessageBox.Show("The Date of your test is: " + test.TestTime.ToShortDateString() + Environment.NewLine + "The time of your test is: " + test.TestTime.ToShortTimeString() + Environment.NewLine + "Your tester number is: " + Environment.NewLine + Configuration.CurrentTestNumber);

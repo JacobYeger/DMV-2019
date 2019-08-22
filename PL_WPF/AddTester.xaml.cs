@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BE;
 using DAL;
+using BL;
 using System.Net.Mail;
 
 namespace PL_WPF
@@ -37,7 +38,7 @@ namespace PL_WPF
         private void Finish(object sender, RoutedEventArgs e)
         {
             Tester tester = new Tester(); //instantiate a tester 
-            myDAL dal_Imp = new myDAL(); //create instance of dal implementation
+            myBL mb = new myBL(); //create instance of BL implementation
             bool flag = true; //flag to ensure all fields have been filled
 
             //Birthday
@@ -57,7 +58,10 @@ namespace PL_WPF
                 MessageBox.Show("Must enter a first name");
                 flag = false;
             }
-            tester.FirstName = firstNameTextBox.Text;
+            else
+            {
+                tester.FirstName = firstNameTextBox.Text;
+            }
 
             //Last name
             if (lastNameTextBox.Text.Equals(string.Empty))
@@ -65,7 +69,10 @@ namespace PL_WPF
                 MessageBox.Show("Must enter a last name");
                 flag = false;
             }
-            tester.LastName = lastNameTextBox.Text;
+            else
+            {
+                tester.LastName = lastNameTextBox.Text;
+            }
 
             //ID
             if (iDTextBox.Text.Equals(String.Empty))
@@ -84,7 +91,11 @@ namespace PL_WPF
                 MessageBox.Show("Must select a gender");
                 flag = false;
             }
-            tester.Gender = (Gender)genderComboBox.SelectedItem;
+            else
+            { 
+                tester.Gender = (Gender)genderComboBox.SelectedItem;
+            }
+
 
             //Address
             //City
@@ -124,9 +135,11 @@ namespace PL_WPF
                 MessageBox.Show("Must enter email");
                 flag = false;
             }
-            MailAddress email = new MailAddress(EmailTextBox.Text);
-
-            tester.Email = email;
+            else
+            {
+                MailAddress email = new MailAddress(EmailTextBox.Text);
+                tester.Email = email;
+            }
 
             //Phone number
             if (phoneNumberTextBox.Text.Equals(string.Empty))
@@ -134,7 +147,10 @@ namespace PL_WPF
                 MessageBox.Show("Must enter a phone number");
                 flag = false;
             }
-            tester.PhoneNumber = phoneNumberTextBox.Text;
+            else
+            {
+                tester.PhoneNumber = phoneNumberTextBox.Text;
+            }
 
             //Tester-specific stuff
             //Max distance
@@ -154,7 +170,10 @@ namespace PL_WPF
                 MessageBox.Show("Must enter maximum tests per week");
                 flag = false;
             }
-            tester.MAX_TESTS_PER_WEEK = int.Parse(MAX_TESTS_PER_WEEKTextBox.Text);
+            else
+            {
+                tester.MAX_TESTS_PER_WEEK = int.Parse(MAX_TESTS_PER_WEEKTextBox.Text);
+            }
 
             //Vehicle specialize
             if (vehicleSpcializeComboBox.SelectedIndex == -1)
@@ -173,8 +192,10 @@ namespace PL_WPF
                 MessageBox.Show("Must enter yearsof experience");
                 flag = false;
             }
-            tester.YearsExperience = int.Parse(yearsExperienceTextBox.Text);
-
+            else
+            {
+                tester.YearsExperience = int.Parse(yearsExperienceTextBox.Text);
+            }
 
             foreach (var item in Checkboxes.Children)
             {
@@ -193,7 +214,7 @@ namespace PL_WPF
            //try-catch to send the correct mesage to the user
            try
             {
-                dal_Imp.AddTester(tester);
+                mb.AddTester(tester);
             }
             catch(Exception exc)
             {
