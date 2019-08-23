@@ -18,6 +18,19 @@ namespace PL_Console
     {
         static void Main(string[] args)
         {
+
+            /*Random random = new Random();
+            int count = 0;
+            while (count < 25)
+            {
+                String r = random.Next(100000000, 999999999).ToString();
+                if (Person.ValidID(r))
+                {
+                    Console.WriteLine(r);
+                    count++;
+                }
+            }*/
+
             myDAL md = new myDAL();
 
             Address addr = new Address { Number = 624, Street = "Derby ave", City = "woodmere" };
@@ -51,7 +64,7 @@ namespace PL_Console
                 Max_Distance = 10
             };
 
-            md.AddTester(Tester3);
+            mb.AddTester(Tester3);
 
 
             Test Test1 = new Test{

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using BE;
+
 namespace PL_WPF
 {
     /// <summary>
@@ -22,6 +24,7 @@ namespace PL_WPF
         public HomePage()
         {
             InitializeComponent();
+            this.Closed += HomePage_Closing;
         }
 
         //Trainees
@@ -78,5 +81,37 @@ namespace PL_WPF
             UpdateTest updateTest = new UpdateTest();
             updateTest.Show();
         }
+
+        private void HomePage_Closing(object sender, EventArgs e)
+        {
+            DAL.myDAL md = new DAL.myDAL();
+            Console.WriteLine("--------------------------------------");
+
+            //Testers
+            Console.WriteLine("Testers: ");
+            IEnumerable<Tester> testers = md.GetTesters();
+            foreach (Tester tester in testers)
+            {
+                Console.WriteLine(tester);
+            }
+
+            //Trainees
+            Console.WriteLine("Trainees: ");
+            IEnumerable<Trainee> trainees = md.GetTrainees();
+            foreach (Trainee trainee in trainees)
+            {
+                Console.WriteLine(trainee);
+            }
+
+            //Tests
+            Console.WriteLine("Tests: ");
+            IEnumerable<Test> tests = md.GetDrivingTests();
+            foreach (Test test in tests)
+            {
+                Console.WriteLine(test);
+            }
+
+        }
+
     }
 }

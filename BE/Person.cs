@@ -24,12 +24,15 @@ namespace BE
             get { return myID; }
             set
             {
-                if (!validID(value))
+                if (!ValidID(value))
                 {
+                    Console.WriteLine("ID failed apparently");
                     throw new Exception("not valid ID");
-                }else{
-                //Console.WriteLine("passed " + value);
-                myID = value;
+                }
+                else
+                {
+                    Console.WriteLine("ID passed apparently");
+                    myID = value;
                 }
             }
         }
@@ -50,11 +53,10 @@ namespace BE
         }
 
         
-
-        private bool validID(string value)
+        public static bool ValidID(string value)
         {
             //plagiarized code to figure out if ID number is valid 
-            string m_PERID = "111111118";
+            string m_PERID = value;
             char[] digits = m_PERID.PadLeft(9, '0').ToCharArray();
             int[] oneTwo = { 1, 2, 1, 2, 1, 2, 1, 2, 1 };
             int[] multiply = new int[9];

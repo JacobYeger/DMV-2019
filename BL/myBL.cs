@@ -29,13 +29,20 @@ namespace BL
         //tester interface
         public bool AddTester(Tester tester)
         {
-            DateTime today = new DateTime();
+            DateTime today = DateTime.Now;
             TimeSpan testerAge = today.Subtract(tester.Birthday);
+            /*
+            Console.WriteLine("Today: " + today);
+            Console.WriteLine("Tester birthday: " + tester.Birthday);
+            Console.WriteLine("Tester age: " + testerAge.Days);
+            */
             if (testerAge.Days / 365 < 40)
             {
+                throw new Exception("Impossible to add a tester under the age of 40");
                 return false;
             }
 
+            dal.AddTester(tester);
             return true;
         }
 
