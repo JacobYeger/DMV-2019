@@ -38,7 +38,7 @@ namespace DAL
                 }
             }
             //add the Tester and return true as the operation has completed
-            DAL.DataSource.getTesters.Add(Tester.Clone());
+            DAL.DataSource.getTesters.Add((Tester)Tester.Clone());
             return true;
         }
 
@@ -164,12 +164,12 @@ namespace DAL
             {
                 result = from t in DAL.DataSource.getTesters
                          where (p(t))
-                         select t.Clone();
+                         select (Tester)t.Clone();
             }
             else
             {
                 result = from t in DAL.DataSource.getTesters
-                         select t.Clone();
+                         select (Tester)t;//.Clone();
             }
             return result.ToList();
         }

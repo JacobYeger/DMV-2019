@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Tester : Person
+    public class Tester : Person, ICloneable
     {
         public int YearsExperience { get; set; }
 
@@ -38,6 +38,13 @@ namespace BE
             }
             return result;
         }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+        /*
         public Tester Clone()
         {
             return new Tester
@@ -53,5 +60,6 @@ namespace BE
 
             };
         }
+        */
     }
 }
