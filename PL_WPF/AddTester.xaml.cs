@@ -157,8 +157,16 @@ namespace PL_WPF
             }
             else
             {
-                MailAddress email = new MailAddress(EmailTextBox.Text);
-                tester.Email = email;
+                try
+                {
+                    MailAddress email = new MailAddress(EmailTextBox.Text);
+                    tester.Email = email;
+                }
+                catch(Exception ex)
+                {
+                    flag = false;
+                    MessageBox.Show(ex.Message);
+                }
             }
 
             //Phone number

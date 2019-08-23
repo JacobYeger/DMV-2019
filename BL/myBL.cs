@@ -42,8 +42,8 @@ namespace BL
                 return false;
             }
 
-            dal.AddTester(tester);
-            return true;
+            
+            return dal.AddTester(tester);
         }
 
         public bool RemoveTester(Tester tester)
@@ -53,14 +53,15 @@ namespace BL
 
         public bool UpdateTester(Tester tester)
         {
-            DateTime today = new DateTime();
+            DateTime today = DateTime.Now;
             TimeSpan testerAge = today.Subtract(tester.Birthday);
             if (testerAge.Days / 365 < 40)
             {
+                throw new Exception("Impossible to add a tester under the age of 40");
                 return false;
             }
 
-            return true;
+            return dal.UpdateTester(tester);
         }
 
         //trainee interface
