@@ -41,6 +41,10 @@ namespace PL_WPF
             myBL mb = new myBL(); //create instance of BL implementation
             bool flag = true; //flag to ensure all fields have been filled
 
+            string city = "";
+            string street =  "";
+            int number = 0;
+
             //Birthday
             if (birthdayDatePicker.SelectedDate == null)
             {
@@ -82,7 +86,14 @@ namespace PL_WPF
             }
             else
             {
-                tester.ID = iDTextBox.Text;
+                try
+                {
+                    tester.ID = iDTextBox.Text;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
             //Gender
@@ -104,7 +115,10 @@ namespace PL_WPF
                 MessageBox.Show("Must enter city");
                 flag = false;
             }
-            String city = cityTextBox.Text;
+            else
+            {
+                city = cityTextBox.Text;
+            }
 
             //Street
             if (streetTextBox.Text.Equals(string.Empty))
@@ -112,7 +126,10 @@ namespace PL_WPF
                 MessageBox.Show("Must enter a street");
                 flag = false;
             }
-            String street = streetTextBox.Text;
+            else
+            {
+                street = streetTextBox.Text;
+            }
 
             //Number
             if (numberTextBox.Text.Equals(string.Empty))
@@ -120,7 +137,10 @@ namespace PL_WPF
                 MessageBox.Show("Must enter number");
                 flag = false;
             }
-            int number = int.Parse(numberTextBox.Text);
+            else
+            {
+                number = int.Parse(numberTextBox.Text);
+            }
 
             tester.Address = new Address
             {
@@ -212,19 +232,18 @@ namespace PL_WPF
             }
 
            //try-catch to send the correct mesage to the user
-           try
-            {
-                mb.AddTester(tester);
-            }
-            catch(Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
-
             Console.WriteLine(tester);
 
             if (flag)
             {
+                try
+                {
+                    mb.AddTester(tester);
+                }
+                catch(Exception exc)
+                {
+                    MessageBox.Show(exc.Message);
+                }
                 this.Close();
             }
         }
