@@ -85,30 +85,30 @@ namespace PL_WPF
         private void HomePage_Closing(object sender, EventArgs e)
         {
             DAL.myDAL md = new DAL.myDAL();
-            Console.WriteLine("--------------------------------------");
+            System.Diagnostics.Debug.WriteLine("--------------------------------------");
 
             //Testers
-            Console.WriteLine("Testers: ");
+            System.Diagnostics.Debug.WriteLine("Testers: ");
             IEnumerable<Tester> testers = md.GetTesters();
             foreach (Tester tester in testers)
             {
-                Console.WriteLine(tester);
+                System.Diagnostics.Debug.WriteLine(tester);
             }
 
             //Trainees
-            Console.WriteLine("Trainees: ");
+            System.Diagnostics.Debug.WriteLine("Trainees: ");
             IEnumerable<Trainee> trainees = md.GetTrainees();
             foreach (Trainee trainee in trainees)
             {
-                Console.WriteLine(trainee);
+                System.Diagnostics.Debug.WriteLine(trainee);
             }
 
             //Tests
-            Console.WriteLine("Tests: ");
+            System.Diagnostics.Debug.WriteLine("Tests: ");
             IEnumerable<Test> tests = md.GetDrivingTests();
             foreach (Test test in tests)
             {
-                Console.WriteLine(test);
+                System.Diagnostics.Debug.WriteLine(test);
             }
             
 
