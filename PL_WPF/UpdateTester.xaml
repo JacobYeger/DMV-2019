@@ -98,7 +98,7 @@
 
 
             <!--Finish button-->
-            <Button Content="Finish" Width="auto" Grid.Row="14" Grid.ColumnSpan="2" Height="50" Click="finish"/>
+            <Button Content="Finish" Width="auto" Grid.Row="14" Grid.ColumnSpan="2" Height="50" Click="Finish"/>
 
 
         </Grid>
@@ -147,17 +147,17 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
-
+ 
 
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Column="0" Grid.Row="0" Text="08:00"  FontWeight="Bold"  TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <TextBlock Grid.Column="0" Grid.Row="1" Text="09:00"  FontWeight="Bold"  TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <TextBlock Grid.Column="0" Grid.Row="2" Text="10:00" FontWeight="Bold"  TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <TextBlock Grid.Column="0" Grid.Row="3" Text="11:00" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <TextBlock Grid.Column="0" Grid.Row="4" Text="12:00" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <TextBlock Grid.Column="0" Grid.Row="5" Text="13:00" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <TextBlock Grid.Column="0" Grid.Row="6" Text="14:00" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <TextBlock Grid.Column="0" Grid.Row="7" Text="15:00" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="08:00-09:00"  FontWeight="Bold"  TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="09:00-10:00"  FontWeight="Bold"  TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="10:00-11:00" FontWeight="Bold"  TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="11:00-12:00" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="0" Grid.Row="4" Text="12:00-13:00" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="0" Grid.Row="5" Text="13:00-14:00" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="0" Grid.Row="6" Text="14:00-15:00" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="0" Grid.Row="7" Text="15:00-16:00" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                 <!--
                 <TextBlock Grid.Column="0" Grid.Row="8" Text="16:00" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                 -->
