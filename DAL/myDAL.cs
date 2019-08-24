@@ -11,18 +11,24 @@ namespace DAL
     public class myDAL : IDAL
     {
 
-        public bool AddTrainee(Trainee trainee)
+        public bool AddTrainee(Trainee Trainee)
         {
-            foreach (var item in DAL.DataSource.getTrainees)
+
+            foreach (Trainee item in DAL.DataSource.getTrainees)
+            {
+                System.Diagnostics.Debug.WriteLine(item.ID);
+            }
+
+            foreach (Trainee item in DAL.DataSource.getTrainees)
             {
                 //check if the trainee is already found in the system
-                if (item.ID == trainee.ID)
+                if (item.ID == Trainee.ID)
                 {
                     throw new Exception("Trainee already exists.");
                 }
             }
             //add the trainee and return true as the operation has completed
-            DAL.DataSource.getTrainees.Add((Trainee)trainee.Clone());
+            DAL.DataSource.getTrainees.Add((Trainee)Trainee.Clone());
             return true;
         }
 

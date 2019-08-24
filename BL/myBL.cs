@@ -67,14 +67,17 @@ namespace BL
         //trainee interface
         public bool AddTrainee(Trainee trainee)
         {
-            DateTime today = new DateTime();
+            myDAL md = new myDAL();
+
+            DateTime today = DateTime.Now;
             TimeSpan traineeAge = today.Subtract(trainee.Birthday);
             if (traineeAge.Days / 365 < 18)
             {
+                throw new Exception("Impossible to add trainee below 18 years of age");
                 return false;
             }
 
-            return true;
+            return md.AddTrainee(trainee);
         }
 
         public bool RemoveTrainee(Trainee trainee)

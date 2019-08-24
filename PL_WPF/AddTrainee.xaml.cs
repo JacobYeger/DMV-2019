@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Net.Mail;
 using DAL;
 using BE;
+using BL;
 
 namespace PL_WPF
 {
@@ -38,15 +39,48 @@ namespace PL_WPF
 
         private void finish(object sender, RoutedEventArgs e)
         {
+            myBL mb = new myBL();
             Trainee trainee = new Trainee();
             bool flag = true;
-            trainee.ID = iDTextBox.Text;
-            trainee.FirstName = firstNameTextBox.Text;
-            trainee.LastName = lastNameTextBox.Text;
-            trainee.Birthday = birthdayDatePicker.SelectedDate.Value.Date;
-           
-           
 
+            string city = "";
+            string street =  "";
+            int number = 0;
+
+            //Birthday
+            if (birthdayDatePicker.SelectedDate == null)
+            {
+                MessageBox.Show("Must select a birthday");
+                flag = false;
+            }
+            else
+            {
+                trainee.Birthday = birthdayDatePicker.SelectedDate.Value.Date;
+            }
+
+            //first name
+            if (firstNameTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Must enter a first name");
+                flag = false;
+            }
+            else
+            {
+                trainee.FirstName = firstNameTextBox.Text;
+            }
+
+            //Last name
+            if (lastNameTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Must enter a last name");
+                flag = false;
+            }
+            else
+            {
+                trainee.LastName = lastNameTextBox.Text;
+            }
+
+            //ID
             if (iDTextBox.Text.Equals(String.Empty))
             {
                 MessageBox.Show("Must enter ID number");
@@ -54,59 +88,71 @@ namespace PL_WPF
             }
             else
             {
-                trainee.ID = iDTextBox.Text;
+                try
+                {
+                    trainee.ID = iDTextBox.Text;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
-            if (firstNameTextBox.Text.Equals(string.Empty))
+            //Gender
+            if (genderComboBox.SelectedIndex == -1)
             {
-                MessageBox.Show("Must enter a first name");
+                MessageBox.Show("Must select a gender");
                 flag = false;
             }
-            trainee.FirstName = firstNameTextBox.Text;
+            else
+            { 
+                trainee.Gender = (Gender)genderComboBox.SelectedItem;
+            }
 
-            if (lastNameTextBox.Text.Equals(string.Empty))
+            //Phone number
+            if (phoneNumberTextBox.Text.Equals(string.Empty))
             {
-                MessageBox.Show("Must enter last name");
+                MessageBox.Show("Must enter a phone number");
                 flag = false;
             }
-            trainee.LastName = lastNameTextBox.Text;
-            if(birthdayDatePicker.SelectedDate == null)
+            else
             {
-                MessageBox.Show("Must enter  birthday");
-                flag = false;
+                trainee.PhoneNumber = phoneNumberTextBox.Text;
             }
-            trainee.Birthday = birthdayDatePicker.SelectedDate.Value.Date;
 
-            //email
-            if (EmailTextBox.Text.Equals(string.Empty))
-            {
-                MessageBox.Show("Must enter email");
-                flag = false;
-            }
-            MailAddress email = new MailAddress(EmailTextBox.Text);
-
-            trainee.Email = email;
-
+            //Address
+            //City
             if (cityTextBox.Text.Equals(string.Empty))
             {
                 MessageBox.Show("Must enter city");
                 flag = false;
             }
-            String city = cityTextBox.Text;
+            else
+            {
+                city = cityTextBox.Text;
+            }
 
+            //Street
             if (streetTextBox.Text.Equals(string.Empty))
             {
                 MessageBox.Show("Must enter a street");
                 flag = false;
             }
-            String street = streetTextBox.Text;
+            else
+            {
+                street = streetTextBox.Text;
+            }
 
+            //Number
             if (numberTextBox.Text.Equals(string.Empty))
             {
                 MessageBox.Show("Must enter number");
                 flag = false;
             }
-            int number = int.Parse(numberTextBox.Text);
+            else
+            {
+                number = int.Parse(numberTextBox.Text);
+            }
 
             trainee.Address = new Address
             {
@@ -115,46 +161,106 @@ namespace PL_WPF
                 City = city
             };
 
-            if (genderComboBox.SelectedIndex == -1)
+            //Email
+            if (EmailTextBox.Text.Equals(string.Empty))
             {
-                MessageBox.Show("Must select a gender");
+                MessageBox.Show("Must enter email");
                 flag = false;
             }
-            trainee.Gender = (Gender)genderComboBox.SelectedItem;
-
-            if (phoneNumberTextBox.Text.Equals(string.Empty))
-            {
-                MessageBox.Show("Must enter a phone number");
-                flag = false;
+            else
+            { 
+                try
+                {
+                    MailAddress email = new MailAddress(EmailTextBox.Text);
+                    trainee.Email = email;
+                }
+                catch(Exception ex)
+                {
+                    flag = false;
+                    MessageBox.Show(ex.Message);
+                }
             }
-            trainee.PhoneNumber = phoneNumberTextBox.Text;
-
-
-
+            
             //Trainee-specific stuff
-            if(vehicleComboBox.SelectedIndex == -1)
+            //Driving school
+            if (drivingSchoolComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Must select a driving school");
+                flag = false;
+            }
+            else
+            { 
+                trainee.DrivingSchool = (DrivingSchool)drivingSchoolComboBox.SelectedItem;
+            }
+
+            //Driving instructor
+            if (drivingInstructorTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Must enter driving instructor");
+                flag = false;
+            }
+            else
+            {
+                trainee.DrivingInstructor = drivingInstructorTextBox.Text;
+            }
+
+            //Number of driving lessons passed
+            if (numDrivingLessonsPassedTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Must enter number of driving tests passed");
+                flag = false;
+            }
+            else
+            {
+                try
+                {
+                number = int.Parse(numberTextBox.Text);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    flag = false;
+                }
+            }
+
+            //Gearbox
+            if (gearboxComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Must select a gearbox");
+                flag = false;
+            }
+            else
+            { 
+                trainee.Gearbox = (Gearbox)gearboxComboBox.SelectedItem;
+            }
+
+            //Vehicle type
+            if (vehicleComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Must select a vehicle type");
                 flag = false;
             }
-            trainee.VehicleType = (VehicleType)vehicleComboBox.SelectedItem;
-            if(gearboxComboBox.SelectedIndex == -1)
-            {
-                MessageBox.Show("Must select a gearbox type");
-                flag = false;
+            else
+            { 
+                trainee.VehicleType = (VehicleType)vehicleComboBox.SelectedItem;
             }
-            trainee.Gearbox = (Gearbox)gearboxComboBox.SelectedItem;
-             
-            trainee.DrivingSchool = (DrivingSchool)drivingSchoolComboBox.SelectedItem;
-            trainee.DrivingInstructor = drivingInstructorTextBox.Text;
-            trainee.NumDrivingLessonsPassed = int.Parse(numDrivingLessonsPassedTextBox.Text);
-            Console.WriteLine(trainee);
+            
+            
+            System.Diagnostics.Debug.WriteLine(trainee);
             //add trainee
-            myDAL md = new myDAL();
-            md.AddTrainee(trainee);
-            Console.WriteLine(md.GetTrainees());
+            mb.AddTrainee(trainee);
+            System.Diagnostics.Debug.WriteLine("meep morp");
+            System.Diagnostics.Debug.WriteLine(mb.GetTrainees());
             if (flag)
             {
+                try
+                {
+                    mb.AddTrainee(trainee);
+                }
+                catch(Exception exc)
+                {
+                    MessageBox.Show(exc.Message);
+                }
                 this.Close();
             }
             
