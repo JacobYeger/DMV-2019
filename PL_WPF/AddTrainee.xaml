@@ -83,10 +83,10 @@
             <!--Address info-->
             <Label VerticalAlignment="Center" Grid.Row="6" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="City:"/>
             <TextBox x:Name="cityTextBox" Width="120" VerticalAlignment="Center" Grid.Row="6" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="8" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Number:"/>
-            <TextBox x:Name="numberTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Address.Number, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="8" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="7" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Street:"/>
             <TextBox x:Name="streetTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Address.Street, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="8" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Number:"/>
+            <TextBox x:Name="numberTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Address.Number, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="8" Margin="2.667,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="9" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Email:"/>
             <TextBox x:Name="EmailTextBox" Width="120" VerticalAlignment="Center" Grid.Row="9" Height="Auto" HorizontalAlignment="Left" Margin="2.667,4,0,4" Grid.Column="1"/>
 

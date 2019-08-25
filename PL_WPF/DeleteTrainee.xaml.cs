@@ -29,19 +29,32 @@ namespace PL_WPF
         private void PromptAuthorization(object sender, RoutedEventArgs e)
         {
             myDAL md = new myDAL();
-            Trainee trainee = new Trainee();
-            trainee.ID = DeleteIDTextbox.Text;
-            bool close = md.RemoveTrainee(trainee);
-            if (close)
+            try
             {
-                this.Close();
-            }
-            List<Trainee> Lst = md.GetTrainees();
-            foreach (Trainee trn in Lst)
-            {
-                Console.WriteLine(trn);
-            }
+                Trainee trainee = new Trainee();
+                trainee.ID = DeleteIDTextbox.Text;
+                bool close = md.RemoveTrainee(trainee);
             
+                if (close)
+                {
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("The trainee does not exist in the system");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);    
+            }
+            /*
+            List<Trainee> Lst = md.GetTrainees();
+            foreach (Trainee trne in Lst)
+            {
+                Console.WriteLine(trne);
+            }
+            */
         }
     }
 }

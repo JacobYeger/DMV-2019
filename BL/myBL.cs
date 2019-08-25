@@ -48,7 +48,9 @@ namespace BL
 
         public bool RemoveTester(Tester tester)
         {
-            return true;
+            myDAL md = new myDAL();
+            return md.RemoveTester(tester);
+            
         }
 
         public bool UpdateTester(Tester tester)
@@ -82,19 +84,23 @@ namespace BL
 
         public bool RemoveTrainee(Trainee trainee)
         {
-            return true;
+            myDAL md = new myDAL();
+            return md.RemoveTrainee(trainee);
         }
 
         public bool UpdateTrainee(Trainee trainee)
         {
-            DateTime today = new DateTime();
+            myDAL md = new myDAL();
+
+            DateTime today = DateTime.Now;
             TimeSpan traineeAge = today.Subtract(trainee.Birthday);
             if (traineeAge.Days / 365 < 18)
             {
+                throw new Exception("Impossible to add trainee below 18 years of age");
                 return false;
             }
 
-            return true;
+            return md.UpdateTrainee(trainee);
         }
 
         //Driving test interface

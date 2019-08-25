@@ -48,11 +48,13 @@ namespace PL_WPF
             {
                 MessageBox.Show(ex.Message);    
             }
+            /*
             List<Tester> Lst = md.GetTesters();
             foreach (Tester tstr in Lst)
             {
                 Console.WriteLine(tstr);
             }
+            */
         }
     }
 }
