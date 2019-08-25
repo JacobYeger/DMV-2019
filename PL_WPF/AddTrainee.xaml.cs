@@ -214,7 +214,7 @@ namespace PL_WPF
             {
                 try
                 {
-                number = int.Parse(numberTextBox.Text);
+                    trainee.NumDrivingLessonsPassed = int.Parse(numDrivingLessonsPassedTextBox.Text);
                 }
                 catch(Exception ex)
                 {
@@ -248,7 +248,7 @@ namespace PL_WPF
             
             System.Diagnostics.Debug.WriteLine(trainee);
             //add trainee
-            mb.AddTrainee(trainee);
+            //mb.AddTrainee(trainee);
             System.Diagnostics.Debug.WriteLine("meep morp");
             System.Diagnostics.Debug.WriteLine(mb.GetTrainees());
             if (flag)

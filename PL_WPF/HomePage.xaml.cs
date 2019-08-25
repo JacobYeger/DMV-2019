@@ -36,7 +36,8 @@ namespace PL_WPF
         }
         private void UpdateTraineeButton(object sender, RoutedEventArgs e)
         {
-            //to do
+            UpdateTrainee updateTrainee = new UpdateTrainee();
+            updateTrainee.Show();
         }
 
         private void DeleteTraineeButton(object sender, RoutedEventArgs e)
