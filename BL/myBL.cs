@@ -119,6 +119,12 @@ namespace BL
                 throw new Exception("No trainee exists in our database with that ID number.");
             }
             
+            //Can't schedule a test for the past, silly
+            if (drivingTest.TestDate.Subtract(DateTime.Now).TotalMilliseconds < 0)
+            {
+                throw new Exception("Can't schedule test in the past.");
+            }
+            
             
             //It is not possible to add a test before 7 days have passed from the trainee’s previous test (if any).
             IEnumerable<Test> result = from t in dl.GetDrivingTests()
@@ -224,6 +230,7 @@ namespace BL
             //allows for the tester to score the test 
             Test test = new Test();
 
+            
             test.TestNumber = drivingTest.TestNumber;
             test.MaintainingDistance = drivingTest.MaintainingDistance;
             test.MirrorChecking = drivingTest.MirrorChecking;
@@ -240,8 +247,8 @@ namespace BL
 
             myDAL md = new myDAL();
             //return trueif the test id was in there, false otherwise
-            md.RemoveTest(drivingTest);
-            return md.AddDrivingTest(test);
+            //md.RemoveTest(drivingTest);
+            return md.UpdateDrivingTest(test);
         }   
 
 

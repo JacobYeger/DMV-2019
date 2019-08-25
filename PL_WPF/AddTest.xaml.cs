@@ -53,13 +53,6 @@ namespace PL_WPF
                 MessageBox.Show("Must select a test date");
                 flag = false;
             }
-            /* this should be in the BL
-             * else if (testDateDatePicker.SelectedDate < DateTime.Now)
-                {
-                MessageBox.Show("Can't schedule test in the past.");
-                flag = false;
-            }
-            */
             else
             {
                 test.TestDate = testDateDatePicker.SelectedDate.Value.Date;
