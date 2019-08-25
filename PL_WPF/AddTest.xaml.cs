@@ -42,61 +42,106 @@ namespace PL_WPF
             //string TestTime = TestTimePicker.SelectedValue.ToString();
             //Console.WriteLine(TestTime);
 
+            string city = "";
+            string street =  "";
+            int number = 0;
+
+            //Date
             //will set the date and time for the test to the date which was selected and the time selected from the combo box
-            if (testDateDatePicker == null)
+            if (testDateDatePicker.SelectedDate == null)
             {
                 MessageBox.Show("Must select a test date");
                 flag = false;
             }
+            /* this should be in the BL
+             * else if (testDateDatePicker.SelectedDate < DateTime.Now)
+                {
+                MessageBox.Show("Can't schedule test in the past.");
+                flag = false;
+            }
+            */
             else
             {
                 test.TestDate = testDateDatePicker.SelectedDate.Value.Date;
             }
 
-
+            //Time
             if (TestTimePicker.SelectedIndex == -1)
             {
                 MessageBox.Show("Must select a test time");
                 flag = false;
             }
+            else
+            {
+                test.TestTime = Convert.ToDateTime(testDateDatePicker.SelectedDate.Value.ToShortDateString() + " " + TestTimePicker.SelectedValue.ToString());
+            }
 
-            test.TestTime = Convert.ToDateTime(testDateDatePicker.SelectedDate.Value.ToShortDateString() + " " + TestTimePicker.SelectedValue.ToString());
+            //TraineeID
+            if(traineeIdNumberTextBox.Text.Equals(String.Empty))
+            {
+                MessageBox.Show("Must enter the ID number of the trainee taking the test");
+            }
+            else
+            {
+                test.TraineeIdNumber = traineeIdNumberTextBox.Text;
+            }
 
+            //Address
+            //City
             if (cityTextBox.Text.Equals(string.Empty))
             {
                 MessageBox.Show("Must enter city");
                 flag = false;
             }
-            String city = cityTextBox.Text;
+            else
+            {
+                city = cityTextBox.Text;
+            }
 
+            //Street
             if (streetTextBox.Text.Equals(string.Empty))
             {
                 MessageBox.Show("Must enter a street");
                 flag = false;
             }
-            String street = streetTextBox.Text;
+            else
+            {
+                street = streetTextBox.Text;
+            }
 
+            //Number
             if (numberTextBox.Text.Equals(string.Empty))
             {
                 MessageBox.Show("Must enter number");
                 flag = false;
             }
-            int number = int.Parse(numberTextBox.Text);
+            else
+            {
+                number = int.Parse(numberTextBox.Text);
+            }
+
             test.TestStartPoint = new Address
             {
-                City = city,
                 Number = number,
-                Street = street
+                Street = street,
+                City = city
             };
 
             myBL mb = new myBL();
             test.TestNumber = "0";
-            flag = mb.AddDrivingTest(test);
-            Console.WriteLine(test.TestTime);
             if (flag)
-                MessageBox.Show("The Date of your test is: " + test.TestTime.ToShortDateString() + Environment.NewLine + "The time of your test is: " + test.TestTime.ToShortTimeString() + Environment.NewLine + "Your tester number is: " + Environment.NewLine + Configuration.CurrentTestNumber);
-
-            this.Close();
+            {
+                try
+                {
+                    mb.AddDrivingTest(test);
+                    MessageBox.Show("The Date of your test is: " + test.TestTime.ToShortDateString() + Environment.NewLine + "The time of your test is: " + test.TestTime.ToShortTimeString() + Environment.NewLine + "Your tester number is: " + Environment.NewLine + Configuration.CurrentTestNumber);
+                }
+                catch(Exception exc)
+                {
+                    MessageBox.Show(exc.Message);
+                }
+                this.Close();
+            }
         }
     }
 }

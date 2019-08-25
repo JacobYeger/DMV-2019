@@ -20,7 +20,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="32" Grid.Row="0" Grid.ColumnSpan="3" FontFamily="Times New Roman">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="28" Grid.Row="0" Grid.ColumnSpan="3" FontFamily="Segue UI Light">
                         Thank you for joining our licensing program! <LineBreak/>
                         We are dedicated to servicing all of your needs- <LineBreak/>
                         whether you are a new trainee or a seasoned instructor!
@@ -62,7 +62,7 @@
                     </Grid.RowDefinitions>
                     <Border Grid.Column="0" BorderThickness="2" BorderBrush="black">
                         <!--Signing up to become a tester -->
-                        <TextBlock Margin ="5" Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
+                        <TextBlock Margin ="5" Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" FontSize="26" FontFamily="Segue UI Light">
                             Certified license examination administrator? <LineBreak/>
                             This button is for you! <LineBreak/>
                             <LineBreak/>
@@ -72,7 +72,7 @@
 
                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="black">
                         <!--Updating details of a current tester-->
-                        <TextBlock Margin="5" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
+                        <TextBlock Margin="5" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" FontSize="26" FontFamily="Segue UI Light">
                             Already one of our testers? <LineBreak/>
                             <LineBreak/>
                             Some of your details change? <LineBreak/>
@@ -83,7 +83,7 @@
 
                     <Border Grid.Column="2"  BorderThickness="2" BorderBrush="black">
                         <!--Updating details of a current tester-->
-                        <TextBlock Margin="5" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
+                        <TextBlock Margin="5" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" FontSize="26" FontFamily="Segue UI Light">
                             Decided on a different direction? <LineBreak/>
                            <LineBreak/>
                             No Problem! <LineBreak/>
@@ -121,7 +121,7 @@
                     </Grid.RowDefinitions>
                     <Border Grid.Column="0" BorderThickness="2" BorderBrush="black">
                         <!--Signing up to become a Trainee -->
-                        <TextBlock Margin ="5" Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
+                        <TextBlock Margin ="5" Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" FontSize="26" FontFamily="Segue UI Light">
                             Looking to start the process of getting a license?<LineBreak/>
                             <LineBreak/>
                             Look no further! <LineBreak/>
@@ -132,7 +132,7 @@
 
                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="black">
                         <!--Updating details of a current tester-->
-                        <TextBlock Margin="5" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
+                        <TextBlock Margin="5" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" FontSize="26" FontFamily="Segue UI Light">
                           Already Training with us?<LineBreak/>
                             <LineBreak/>
                             Some of your details changed? <LineBreak/>
@@ -143,7 +143,7 @@
 
                     <Border Grid.Column="2"  BorderThickness="2" BorderBrush="black">
                         <!--Deleting details of a trainee-->
-                        <TextBlock Margin="5" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
+                        <TextBlock Margin="5" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" FontSize="26" FontFamily="Segue UI Light">
                             Got your license or decided to go with another group?<LineBreak/>
                             <LineBreak/>
                             Not a Rproblem! <LineBreak/>
@@ -179,7 +179,7 @@
                     </Grid.RowDefinitions>
                     <Border Grid.Column="0" BorderThickness="2" BorderBrush="black">
                         <!--Signing up to become a Trainee -->
-                        <TextBlock Margin ="5" Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
+                        <TextBlock Margin ="5" Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" FontSize="26" FontFamily="Segue UI Light">
                             Finished with your lessons and ready to sign up for the test?<LineBreak/>
                            
                             <LineBreak/>
@@ -189,18 +189,18 @@
 
                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="black">
                         <!--Updating details of a current tester-->
-                        <TextBlock Margin="5" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
-                          Already have a test scheduled?<LineBreak/>
+                        <TextBlock Margin="5" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" FontSize="24" FontFamily="Segue UI Light">
+                          Tester looking to update the grade on a test?<LineBreak/>
                             <LineBreak/>
-                            Need to reschedule? <LineBreak/>
+                            Office worker looking to update test details? <LineBreak/>
                             <LineBreak/>
-                            Click below to update your test timetable!
+                            Click below to update your test!
                         </TextBlock>
                     </Border>
 
                     <Border Grid.Column="2"  BorderThickness="2" BorderBrush="black">
                         <!--Deleting details of a trainee-->
-                        <TextBlock Margin="5" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" FontSize="29" FontFamily="Times New Roman">
+                        <TextBlock Margin="5" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" FontSize="26" FontFamily="Segue UI Light">
                             Decided you don't want to take the test?<LineBreak/>
                             <LineBreak/>
                             Not a Problem!<LineBreak/> 

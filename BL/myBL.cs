@@ -108,7 +108,17 @@ namespace BL
         {
             myDAL dl = new myDAL();
             Func<Trainee, bool> anon = (Trainee trn) => (trn.ID == drivingTest.TraineeIdNumber);
-            Trainee trainee = dl.GetTrainees(anon).FirstOrDefault();
+            Trainee trainee;
+            IEnumerable<Trainee> traineeList = dl.GetTrainees(anon);
+            if(traineeList.Count() > 0)
+            {
+                 trainee = traineeList.FirstOrDefault();
+            }
+            else
+            {
+                throw new Exception("No trainee exists in our database with that ID number.");
+            }
+            
             
             //It is not possible to add a test before 7 days have passed from the trainee’s previous test (if any).
             IEnumerable<Test> result = from t in dl.GetDrivingTests()
@@ -120,17 +130,17 @@ namespace BL
                 Test testToCompare = result.ToList().FirstOrDefault();
                 if ((drivingTest.TestDate.Subtract(testToCompare.TestDate)).Days < 7)
                 {
-                    Console.WriteLine("It is not possible to add a test before 7 days have passed from the trainee’s previous test (if any).");
+                    throw new Exception("It is not possible to add a test before 7 days have passed from the trainee’s previous test (if any).");
                     return false;
                 }
             }
-
+            
             // It is not possible to add a test to a trainee who has done fewer than 20 lessons
             if (trainee.NumDrivingLessonsPassed < 20)
             {
                 return false;
             }
-
+            
             //Two tests at the same time cannot be set up for the tester/ trainee
             result = from t in dl.GetDrivingTests()
                      where (t.TraineeIdNumber == trainee.ID && t.TestDate == drivingTest.TestDate && t.TestTime == drivingTest.TestTime)
@@ -156,7 +166,7 @@ namespace BL
             List<Tester> testerList = dl.GetTesters(anon2);
             if(testerList.Count == 0)
             {
-                Console.WriteLine("There were no testers that matched your criteria");
+                throw new Exception("There were no testers that matched your criteria");
                 return false;
             }
 
