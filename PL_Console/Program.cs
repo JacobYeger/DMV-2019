@@ -32,11 +32,13 @@ namespace PL_Console
             }*/
 
             myDAL md = new myDAL();
+            myBL mb = new myBL();
+            //System.Diagnostics.Debug.WriteLine("Day of week: ");
+            mb.GetTestersAvailableAtTime(DateTime.Now);
 
             Address addr = new Address { Number = 624, Street = "Derby ave", City = "woodmere" };
             Address addr2 = new Address { Number = 530, Street = "Oakland ave", City = "cedarhurst" };
-            myBL mb = new myBL();
-
+            
             Console.WriteLine(mb.Distance(addr, addr2));
             Console.ReadKey();
             

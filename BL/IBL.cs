@@ -48,18 +48,19 @@ namespace BL
 
         //A function that returns a list of all scheduled tests by month
         List<Test> AllTestsInMonth(DateTime month);
-
-        // A group of testers according to type of specialization
+        
+        //Grouping
+        //A group of testers according to type of specialization
         List<Tester> GetTestersGroupedBySpecialty(bool sort = false);
 
         //A list of trainees grouped according to the driving school in which they studied
-        List<Trainee> TraineesGroupedBySchool();
+        List<Trainee> GetTraineesGroupedBySchool(bool sort = false);
 
         //A list of trainees grouped according to the driving instructor with whom they studied
-        List<Trainee> TraineesGroupedByInstructor();
+        List<Trainee> GetTraineesGroupedByInstructor(bool sort = false);
         
         //A list of trainees grouped according to the number of tests they took
-        List<Trainee> TraineesGroupedByNumberOfTests();
+        List<Trainee> GetTraineesGroupedByNumberOfTests(bool sort = false);
 
 
 

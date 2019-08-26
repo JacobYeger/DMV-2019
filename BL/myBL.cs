@@ -382,7 +382,25 @@ namespace BL
 
         public List<Tester> GetTestersAvailableAtTime(DateTime time)
         {
-            throw new NotImplementedException();
+            int DayOfWeek = (int)time.DayOfWeek;
+
+            //No one works on friday or shabbat
+            if(DayOfWeek == 5 || DayOfWeek == 6)
+            {
+                return new List<Tester>();
+            }
+            
+            int Hour = time.Hour -8;
+            //No one works before 8 am or after 4 pm
+            if(Hour < 0 || Hour > 7)
+            {
+                return new List<Tester>();
+            }
+            
+            myDAL md = new myDAL();
+            List<Tester> result = from T in md.GetTesters
+                                where (T.AvailabilityMatrix[DayOfWeek,Hour])
+                                select T;
         }
 
         public int TestsTakenByTrainee(Trainee trainee)
@@ -408,14 +426,102 @@ namespace BL
             return false;
         }
 
+        //A function that returns a list of all scheduled tests by day
+        public List<Test> AllTestsInDay(DateTime day)
+        {
+            throw new NotImplementedException();
+        }
+
+        //A function that returns a list of all scheduled tests by month
+        public List<Test> AllTestsInMonth(DateTime month)
+        {
+            throw new NotImplementedException();
+        }
+        
+        //Grouping
+        //A group of testers according to type of specialization
         public List<Tester> GetTestersGroupedBySpecialty(bool sort = false)
         {
             myDAL dl = new myDAL();
-            IEnumerable<Test> result = from t in dl.GetTesters()
-                                       group t by t.VehicleSpecialize into newGroup
-                                       select (Test)newGroup;
+            IEnumerable<Tester> result;
+            if(sort)
+            {
+                result = from t in dl.GetTesters()
+                         orderby t.LastName
+                         group t by t.VehicleSpecialize into newGroup
+                         select (Tester)newGroup;
+            }
+            else
+            {
+                result = from t in dl.GetTesters()
+                         group t by t.VehicleSpecialize into newGroup
+                         select (Tester)newGroup;
+            }
             return (List<Tester>) result;
 
         }
+
+        //A list of trainees grouped according to the driving school in which they studied
+        public List<Trainee> GetTraineesGroupedBySchool(bool sort = false)
+        {
+            myDAL dl = new myDAL();
+            IEnumerable<Trainee> result;
+            if(sort)
+            {
+                result = from t in dl.GetTrainees()
+                         orderby t.LastName
+                         group t by t.DrivingSchool into newGroup
+                         select (Trainee)newGroup;
+            }
+            else
+            {
+                result = from t in dl.GetTrainees()
+                         group t by t.DrivingSchool into newGroup
+                         select (Trainee)newGroup;
+            }
+            return (List<Trainee>) result;
+        }
+
+        //A list of trainees grouped according to the driving instructor with whom they studied
+        public List<Trainee> GetTraineesGroupedByInstructor(bool sort = false)
+        {
+            myDAL dl = new myDAL();
+            IEnumerable<Trainee> result;
+            if(sort)
+            {
+                result = from t in dl.GetTrainees()
+                         orderby t.LastName
+                         group t by t.DrivingInstructor into newGroup
+                         select (Trainee)newGroup;
+            }
+            else
+            {
+                result = from t in dl.GetTrainees()
+                         group t by t.DrivingInstructor into newGroup
+                         select (Trainee)newGroup;
+            }
+            return (List<Trainee>) result;
+        }
+        
+        //A list of trainees grouped according to the number of tests they took
+        public List<Trainee> GetTraineesGroupedByNumberOfTests(bool sort = false)
+        {
+            myDAL dl = new myDAL();
+            IEnumerable<Trainee> result;
+            if(sort)
+            {
+                result = from t in dl.GetTrainees()
+                         orderby t.LastName
+                         group t by TestsTakenByTrainee(t) into newGroup
+                         select (Trainee)newGroup;
+            }
+            else
+            {
+                result = from t in dl.GetTrainees()
+                         group t by TestsTakenByTrainee(t) into newGroup
+                         select (Trainee)newGroup;
+            }
+            return (List<Trainee>) result;
+        }
     }
-    }
+}
