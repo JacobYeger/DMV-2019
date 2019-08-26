@@ -51,7 +51,14 @@ namespace DAL
         public bool AddDrivingTest(Test drivingTest)
         {
             Test TestToAdd = (Test)drivingTest.Clone();
-            TestToAdd.TestNumber = (++Configuration.CurrentTestNumber).ToString();
+            if(drivingTest.TestNumber == "0")
+            {
+                TestToAdd.TestNumber = (++Configuration.CurrentTestNumber).ToString();
+            }
+            else
+            {
+                TestToAdd.TestNumber = drivingTest.TestNumber;
+            }
             DAL.DataSource.getTests.Add(TestToAdd);
             //Console.WriteLine(TestToAdd);
             return true;

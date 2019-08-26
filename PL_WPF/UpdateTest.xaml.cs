@@ -86,13 +86,22 @@ namespace PL_WPF
             }
 
             //Address
-            int number;
-            if(numberTextBox.Text.Equals(String.Empty))
+            //Sentinel values
+            string city = "empty";
+            int number = 0;
+            string street = "empty";
+
+             if(!cityTextBox.Text.Equals(String.Empty))
             {
-                //Sentinel value
-                number = 0;
+                city = cityTextBox.Text;
             }
-            else
+            
+            if(!streetTextBox.Text.Equals(String.Empty))
+            {
+                street = streetTextBox.Text;
+            }
+
+            if(!numberTextBox.Text.Equals(String.Empty))
             {
                 try
                 {
@@ -100,46 +109,60 @@ namespace PL_WPF
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show("Please only enter numbers in the address number field");
+                    MessageBox.Show("Number field" + ex.Message);
                     flag = false;
                 }
             }
-            //If anything at all was entered in one of the address fields
-            if(!(cityTextBox.Text.Equals(String.Empty) && streetTextBox.Text.Equals(String.Empty) && numberTextBox.Text.Equals(String.Empty)))
+
+            test.TestStartPoint = new Address
             {
-                test.TestStartPoint = new Address
-                {
-                    City = cityTextBox.Text,
-                    Number = number,
-                    Street = streetTextBox.Text
-                };
+                City = city,
+                Number = number,
+                Street = street
+            };
+
+            //Maintaining distance
+            test.MaintainingDistance = (bool)maintainingDistanceCheckBox.IsChecked;
+            //Mirror Checking
+            test.MirrorChecking = (bool)mirrorCheckingCheckBox.IsChecked;
+            //Parking in reverse (parallel parking?)
+            test.ParkingInReverse = (bool)parkingInReverseCheckBox.IsChecked;
+            //Signaling
+            test.Signaling = (bool)signalingCheckBox.IsChecked;
+
+            if(testResultTextBox.Text.Equals(String.Empty))
+            {
+                MessageBox.Show("Must enter test result");
+                flag = false;
             }
             else
             {
-                //Sentinel values
-                test.TestStartPoint = new Address
+                try
                 {
-                    City = "empty",
-                    Number = 0,
-                    Street = "empty"
-                };
+                    test.TestScore = int.Parse(testResultTextBox.Text);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Test result: " + ex.Message);
+                    flag = false;
+                }
             }
 
-            //Maintaining distance
-            test.MaintainingDistance = maintainingDistanceCheckBox.IsChecked;
-            //Mirror Checking
-            test.MirrorChecking = mirrorCheckingCheckBox.IsChecked;
-            //Parking in reverse (parallel parking?)
-            test.ParkingInReverse = parkingInReverseCheckBox.IsChecked;
-            //Signaling
-            test.Signaling = signalingCheckBox.IsChecked;
+            test.TestersComments = testersCommentsTextBox.Text;
             
             myBL mb = new myBL();
-            mb.UpdateDrivingTest(test);
 
             if(flag)
             {
-                this.Close();
+                try
+                {
+                    mb.UpdateDrivingTest(test);
+                    this.Close();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }

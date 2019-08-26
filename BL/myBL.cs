@@ -225,27 +225,49 @@ namespace BL
             return md.RemoveTest(drivingTest);
         }
 
-        public bool UpdateDrivingTest(Test drivingTest)
+        public bool UpdateDrivingTest(Test NewTest)
         {
+            myDAL md = new myDAL();
+            List<Test> result = (List<Test>)(from T in md.GetDrivingTests()
+                            where (T.TestNumber == NewTest.TestNumber)
+                            select T);
+
+            if(result.Count == 0)
+            {
+                throw new Exception("That test number is now in our system");
+            }
+            Test OldTest = (Test)result.First();
             //allows for the tester to score the test 
             Test test = new Test();
 
+            test.TestNumber = NewTest.TestNumber;
+            //Check for sentinel value in new test. if it's present, it wasn't updated and the old one should be used
+            test.TesterIdNumber = (NewTest.TesterIdNumber == "empty") ? OldTest.TesterIdNumber : NewTest.TesterIdNumber;
+            //Check for sentinel value in new test. if it's present, it wasn't updated and the old one should be used
+            test.TraineeIdNumber = (NewTest.TraineeIdNumber == "empty") ? OldTest.TraineeIdNumber : NewTest.TraineeIdNumber;
+            //Check for sentinel value in new test. if it's present, it wasn't updated and the old one should be used
+            test.TestDate = (NewTest.TestDate == new DateTime()) ? OldTest.TestDate : NewTest.TestDate;
+            //You get the gist, assume it's checking the sentinel value for everything going forward until told otherwise
+            test.TestTime = (NewTest.TestTime == new DateTime()) ? OldTest.TestTime : NewTest.TestTime;
+            //Address
+            string city = (NewTest.TestStartPoint.City == "empty") ? OldTest.TestStartPoint.City : NewTest.TestStartPoint.City;
+            string street = (NewTest.TestStartPoint.Street == "empty") ? OldTest.TestStartPoint.Street : NewTest.TestStartPoint.Street;
+            int number = (NewTest.TestStartPoint.Number == 0) ? OldTest.TestStartPoint.Number : NewTest.TestStartPoint.Number;
+            test.TestStartPoint = new Address{
+                City = city,
+                Street = street,
+                Number = number
+                };                                            
+            //Scoring
+            test.MirrorChecking = NewTest.MirrorChecking;
+            test.ParkingInReverse = NewTest.ParkingInReverse;
+            test.MaintainingDistance = NewTest.MaintainingDistance;
+            test.Signaling = NewTest.Signaling;
+
+            test.TestScore = NewTest.TestScore;
+
+            test.TestersComments = NewTest.TestersComments;
             
-            test.TestNumber = drivingTest.TestNumber;
-            test.MaintainingDistance = drivingTest.MaintainingDistance;
-            test.MirrorChecking = drivingTest.MirrorChecking;
-            test.ParkingInReverse = drivingTest.ParkingInReverse;
-            test.Signaling = drivingTest.Signaling;
-
-            test.TestTime = drivingTest.TestTime;
-
-            test.TestStartPoint = drivingTest.TestStartPoint;
-
-            test.TestScore = drivingTest.TestScore;
-
-            test.TestersComments = drivingTest.TestersComments;
-
-            myDAL md = new myDAL();
             //return trueif the test id was in there, false otherwise
             //md.RemoveTest(drivingTest);
             return md.UpdateDrivingTest(test);

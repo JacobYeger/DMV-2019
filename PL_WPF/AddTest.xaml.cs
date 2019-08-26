@@ -128,12 +128,12 @@ namespace PL_WPF
                 {
                     mb.AddDrivingTest(test);
                     MessageBox.Show("The Date of your test is: " + test.TestTime.ToShortDateString() + Environment.NewLine + "The time of your test is: " + test.TestTime.ToShortTimeString() + Environment.NewLine + "Your tester number is: " + Environment.NewLine + Configuration.CurrentTestNumber);
+                    this.Close();
                 }
                 catch(Exception exc)
                 {
                     MessageBox.Show(exc.Message);
                 }
-                this.Close();
             }
         }
     }
