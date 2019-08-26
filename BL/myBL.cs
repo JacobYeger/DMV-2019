@@ -398,9 +398,10 @@ namespace BL
             }
             
             myDAL md = new myDAL();
-            List<Tester> result = from T in md.GetTesters
+            IEnumerable<Tester> result = from T in md.GetTesters()
                                 where (T.AvailabilityMatrix[DayOfWeek,Hour])
                                 select T;
+            return (List<Tester>)result;
         }
 
         public int TestsTakenByTrainee(Trainee trainee)
@@ -429,13 +430,22 @@ namespace BL
         //A function that returns a list of all scheduled tests by day
         public List<Test> AllTestsInDay(DateTime day)
         {
-            throw new NotImplementedException();
+            myDAL md = new myDAL();
+            IEnumerable<Test> result = from T in md.GetDrivingTests()
+                                where (T.TestDate.Day == day.Day)
+                                select T;
+            return (List<Test>)result;
         }
 
         //A function that returns a list of all scheduled tests by month
         public List<Test> AllTestsInMonth(DateTime month)
         {
-            throw new NotImplementedException();
+            
+            myDAL md = new myDAL();
+            IEnumerable<Test> result = from T in md.GetDrivingTests()
+                                where (T.TestDate.Month == month.Month)
+                                select T;
+            return (List<Test>)result;
         }
         
         //Grouping

@@ -54,7 +54,9 @@
                 <ComboBoxItem>13:00:00</ComboBoxItem>
                 <ComboBoxItem>14:00:00</ComboBoxItem>
                 <ComboBoxItem>15:00:00</ComboBoxItem>
+              <!-- No one works this late
                 <ComboBoxItem>16:00:00</ComboBoxItem>
+                -->
             </ComboBox>
             <!--Trainee ID-->
             <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Trainee Id Number:"/>
@@ -66,12 +68,13 @@
             <!--Start point of test-->
             <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="City:"/>
             <TextBox x:Name="cityTextBox" Width="120" VerticalAlignment="Center" Text="{Binding TestStartPoint.City, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Number:"/>
-            <TextBox x:Name="numberTextBox" Width="120" VerticalAlignment="Center" Text="{Binding TestStartPoint.Number, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Street:"/>
-            <TextBox x:Name="streetTextBox" Width="120" VerticalAlignment="Center" Text="{Binding TestStartPoint.Street, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Street:"/>
+            <TextBox x:Name="streetTextBox" Width="120" VerticalAlignment="Center" Text="{Binding TestStartPoint.Street, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Number:"/>
+            <TextBox x:Name="numberTextBox" Width="120" VerticalAlignment="Center" Text="{Binding TestStartPoint.Number, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
 
-            <!--Testing Criteria-->
+
+          <!--Testing Criteria-->
             <Label VerticalAlignment="Center" Grid.Row="8" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Maintaining Distance:"/>
             <CheckBox x:Name="maintainingDistanceCheckBox" VerticalAlignment="Center" Grid.Row="8" Margin="3" IsChecked="{Binding MaintainingDistance, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
             <Label VerticalAlignment="Center" Grid.Row="9" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Mirror Checking:"/>
