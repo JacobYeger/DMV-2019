@@ -40,11 +40,26 @@ namespace BL
         //A function that a receives a trainee number, and returns the number of tests he took
         int TestsTakenByTrainee(Trainee trainee);
 
-        //A function that a receives a trainee number and returns if he is entitled to a driving license(if he has passed a driving test).
+        //A function that a receives a trainee number and returns if he is entitled to a driving license (if he has passed a driving test).
         bool IsEntitledToLicense(Trainee trainee);
+
+        //A function that returns a list of all scheduled tests by day
+        List<Test> AllTestsInDay(DateTime day);
+
+        //A function that returns a list of all scheduled tests by month
+        List<Test> AllTestsInMonth(DateTime month);
 
         // A group of testers according to type of specialization
         List<Tester> GetTestersGroupedBySpecialty(bool sort = false);
+
+        //A list of trainees grouped according to the driving school in which they studied
+        List<Trainee> TraineesGroupedBySchool();
+
+        //A list of trainees grouped according to the driving instructor with whom they studied
+        List<Trainee> TraineesGroupedByInstructor();
+        
+        //A list of trainees grouped according to the number of tests they took
+        List<Trainee> TraineesGroupedByNumberOfTests();
 
 
 
