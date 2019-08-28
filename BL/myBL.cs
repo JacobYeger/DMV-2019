@@ -158,7 +158,7 @@ namespace BL
             }
 
             //• It is not possible to set up a test on a type of vehicle for a student who has already passed a driving test on that type of vehicle.
-            result = from t in dl.GetDrivingTests()
+            /*result = from t in dl.GetDrivingTests()
                      //Todo: Add VehicleType property to test, uncomment line below
                      //where (t.TraineeIdNumber == trainee.ID && t.VehicleType = drivingTest.VehicleType && t.TestResult == 1)
                      select (Test)t.Clone();
@@ -166,7 +166,7 @@ namespace BL
             if (result.ToList<Test>().Count != 0)
             {
                 return false;
-            }
+            }*/
 
             Func<Tester, bool> anon2 = (Tester tstr) => (isValidTester(tstr, trainee, drivingTest));
             List<Tester> testerList = dl.GetTesters(anon2);

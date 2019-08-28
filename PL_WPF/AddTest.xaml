@@ -69,10 +69,6 @@
             <!--
             <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Tester Id Number:"/>
             <TextBox x:Name="testerIdNumberTextBox" Width="120" VerticalAlignment="Center" Text="{Binding TesterIdNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>-->
-
-            <!--Type of vehicle being tested on-->
-            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Vehicle Type:"/>
-            <ComboBox x:Name="vehicleTypeCombobox" Width="120" VerticalAlignment="Center" Grid.Row="3" Margin="2.667,5,0,5"  ItemsSource="{Binding Source={StaticResource VehicleTypeEnum }}" Height="Auto" HorizontalAlignment="Left" Grid.Column="1"/>
             
             <!--Start point of test-->
             <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="City:"/>

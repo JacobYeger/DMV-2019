@@ -73,6 +73,7 @@ namespace PL_WPF
             if(traineeIdNumberTextBox.Text.Equals(String.Empty))
             {
                 MessageBox.Show("Must enter the ID number of the trainee taking the test");
+                flag = false;
             }
             else
             {

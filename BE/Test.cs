@@ -49,7 +49,6 @@ namespace BE
             result += string.Format("Test number: {0} \n", TestNumber);
             result += string.Format("Tester ID number: {0} \n", TesterIdNumber);
             result += string.Format("Trainee ID number: {0} \n", TraineeIdNumber);
-            result += string.Format("Vehicle type: {0} \n", VehicleBeingTestedOn);
             result += string.Format("Test date: {0} \n", TestDate);
             result += string.Format("Test time: {0} \n", TestTime);
             result += string.Format("Starting point: {0} \n", TestStartPoint);
