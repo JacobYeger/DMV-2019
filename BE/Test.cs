@@ -11,6 +11,7 @@ namespace BE
         public string TestNumber { get; set; } //test number
         public string TesterIdNumber { get; set; }//ID number of the tester
         public string TraineeIdNumber { get; set; } //ID number of the trainee
+        public VehicleType VehicleBeingTestedOn {get; set;} //The type of vehicle the test is for
         public DateTime TestDate { get; set; }//date of the test
         public DateTime TestTime { get; set; } //Time of the test
         public Address TestStartPoint { get; set; }//address denoting starting point of the test
@@ -48,6 +49,7 @@ namespace BE
             result += string.Format("Test number: {0} \n", TestNumber);
             result += string.Format("Tester ID number: {0} \n", TesterIdNumber);
             result += string.Format("Trainee ID number: {0} \n", TraineeIdNumber);
+            result += string.Format("Vehicle type: {0} \n", VehicleBeingTestedOn);
             result += string.Format("Test date: {0} \n", TestDate);
             result += string.Format("Test time: {0} \n", TestTime);
             result += string.Format("Starting point: {0} \n", TestStartPoint);

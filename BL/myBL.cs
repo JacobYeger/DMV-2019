@@ -179,7 +179,7 @@ namespace BL
             Tester tester = testerList.First();
             drivingTest.TesterIdNumber = tester.ID;
             //If he has not violated any of the above rules
-            return true;
+            return dl.AddDrivingTest(drivingTest);
         }
 
         private bool isValidTester(Tester tester, Trainee trainee, Test test)
