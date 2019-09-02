@@ -79,6 +79,23 @@ namespace DAL
                 saveListToXML<Tester>(new List<Tester>(), TestersFilePath);
             }
         }
+
+
+        public XElement AddressToXElement(Address addr)
+        {
+            XElement Address = new XElement("Address");
+
+            XElement City = new XElement("City", addr.City);
+            Address.Add(City);
+
+            XElement Street = new XElement("Street", addr.Street);
+            Address.Add(Street);
+
+            XElement Number = new XElement("Number", addr.Number);
+            Address.Add(Number);
+
+            return Address;
+        }
     }
 
 }
