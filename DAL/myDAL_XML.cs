@@ -81,6 +81,100 @@ namespace DAL
             }
         }
 
+        public bool AddTrainee(Trainee Trainee)
+        {
+            //Check XMl for trainee Id number. If it exists, return false or throw an error
+            //If not, add trainee to the XML
+            return true;
+        }
+
+        public bool AddTester(Tester Tester)
+        {
+            //Checl XMl for tester Id number. If it exists, return false or throw an error
+            //If not, add tester to the XML
+            return true;
+        }
+
+        public bool AddDrivingTest(Test drivingTest)
+        {
+            //Check if test has Test number of 0. If so, assign new test number to it, and update the config XML
+            //if not, leave test number alone
+            //Check XML for test number. If it exists, return false or throw an error
+            //if not, add to XML file
+            return true;
+
+        }
+
+        public bool RemoveTrainee(Trainee trainee)
+        {
+            //Locate trainee in XML. If he doesn't exist, return false or throw error
+            //If he does, remove him 
+            
+            return DAL.DataSource.getTrainees.Remove(BadTrainee);
+        }
+
+        public bool RemoveTester(Tester Tester)
+        {
+            //Locate tester in XML. If he doesn't exist, return false or throw error
+            //If he does, remove him
+            
+            return DAL.DataSource.getTesters.Remove(BadTester);
+        }
+
+        public bool RemoveTest(Test test)
+        {
+            //Locate test in XML. If it doesn't exist, return false or throw error
+            //If it does, remove it
+            return DAL.DataSource.getTests.Remove(BadTest);
+        }
+
+        public bool UpdateDrivingTest(Test drivingTest)
+        {
+            //Locate test in XML. If it doesn't exist, return false or throw error
+            //If it does, remove it and replace it
+
+            return true;
+        }
+        public bool UpdateTester(Tester tester)
+        {
+            //Locate tester in XML. If he doesn't exist, return false or throw error
+            //If he does, remove him and replace him
+
+            return true;
+        }
+        public bool UpdateTrainee(Trainee trainee)
+        {
+            //Locate trainee in XML. If he doesn't exist, return false or throw error
+            //If he does, remove him and replace him
+
+            return true;
+        }
+
+
+        //returns the list of driving tests
+        public List<Test> GetDrivingTests(Func<Test, bool> p = null)
+        {
+            IEnumerable<Test> result = null;
+
+            return result.ToList();
+        }
+
+        //getter for trainees with functionality for adding conditions on the search
+        public List<Trainee> GetTrainees(Func<Trainee, bool> p = null)
+        {
+            IEnumerable<Trainee> result = null;
+
+            return result.ToList();
+        }
+
+        //getter for Testers with functionality for adding conditions on the search 
+        public List<Tester> GetTesters(Func<Tester, bool> p = null)
+        {
+            IEnumerable<Tester> result = null;
+
+            return result.ToList();
+        }
+
 
         public XElement AddressToXElement(Address addr)
         {
@@ -112,6 +206,7 @@ namespace DAL
         {
 
         }
+        
     }
 
 }
