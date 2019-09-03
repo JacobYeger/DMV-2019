@@ -12,7 +12,7 @@ using System.Xml.Serialization;
 
 namespace DAL
 {
-    class myDAL_XML : IDAL
+    public class myDAL_XML : IDAL
     {
         string TestsFilePath = "Tests.xml";
         string TestersFilePath = "Testers.xml";
@@ -20,6 +20,7 @@ namespace DAL
         string ConfigFilePath = "Config.xml";
         XElement TestsRoot;
         XElement ConfigRoot;
+
 
         public myDAL_XML()
         {
@@ -62,7 +63,7 @@ namespace DAL
                 FileStream TraineeFileStream = new FileStream(TraineesFilePath, FileMode.Create);
                 TraineeFileStream.Close();
                 DAL.DataSource.Trainees = new List<Trainee>();
-                saveListToXML<Trainee>(new List<Trainee>(), TraineesFilePath);
+                SaveListToXML<Trainee>(new List<Trainee>(), TraineesFilePath);
             }
 
             if (File.Exists(TestersFilePath))
@@ -76,7 +77,7 @@ namespace DAL
                 FileStream TestersFileStream = new FileStream(TestersFilePath, FileMode.Create);
                 TestersFileStream.Close();
                 DAL.DataSource.Testers = new List<Tester>();
-                saveListToXML<Tester>(new List<Tester>(), TestersFilePath);
+                SaveListToXML<Tester>(new List<Tester>(), TestersFilePath);
             }
         }
 
@@ -95,6 +96,21 @@ namespace DAL
             Address.Add(Number);
 
             return Address;
+        }
+
+        public List<T> LoadListFromXML<T>(Path path)
+        {
+            List<T> list = new List<T>();
+
+            //Pull list out of XML file
+
+            return list;
+
+        }
+
+        public void SaveListToXML<T>(List<T> list, Path path)
+        {
+
         }
     }
 

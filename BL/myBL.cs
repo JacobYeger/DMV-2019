@@ -29,6 +29,7 @@ namespace BL
         //tester interface
         public bool AddTester(Tester tester)
         {
+            
             DateTime today = DateTime.Now;
             TimeSpan testerAge = today.Subtract(tester.Birthday);
             /*
